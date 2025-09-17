@@ -1,0 +1,53 @@
+---
+const {
+  lang = 'cs',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#9f00a7" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" />
+    <link rel="stylesheet" href="/assets/css/animate.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome-pro.min.css" />
+    <link rel="stylesheet" href="/assets/css/flaticon_gerold.css" />
+    <link rel="stylesheet" href="/assets/css/nice-select.css" />
+    <link rel="stylesheet" href="/assets/css/backToTop.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/css/odometer-theme-default.css" />
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+    <link rel="stylesheet" href="/assets/css/metisMenu.css" />
+    <link rel="stylesheet" href="/assets/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/slick.css" />
+    <link rel="stylesheet" href="/assets/fonts/bootstrap-icons/font-css.css" />
+    <link rel="stylesheet" href="/assets/css/spacing.css" />
+    <link rel="stylesheet" href="/assets/css/mobile-menu-override.css" />
+    <link rel="stylesheet" href="/assets/css/aos.css" />
+    <link rel="stylesheet" href="/assets/fonts/custom-font/css/clash-display.css" />
+    <link rel="stylesheet" href="/sluzby/css/main.css" />
+    <slot name="head" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92X11QBKZL"></script>
+    <script>
+      {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-92X11QBKZL');`}
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
