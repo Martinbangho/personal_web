@@ -1,0 +1,28 @@
+---
+import type { Locale } from '../data/navigation';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'cs' }: Props = Astro.props;
+
+const ctas = {
+  cs: {
+    href: '/#contact-section',
+    label: 'Domluvit konzultaci',
+  },
+  en: {
+    href: '/en/#contact-section',
+    label: 'Book a consultation',
+  },
+} as const satisfies Record<Locale, { href: string; label: string }>;
+
+const cta = ctas[lang];
+---
+<Fragment slot="nav-desktop-cta">
+  <a class="theme_btn" href={cta.href}>{cta.label}</a>
+</Fragment>
+<Fragment slot="nav-mobile-cta">
+  <a class="theme_btn w-100 text-center" href={cta.href}>{cta.label}</a>
+</Fragment>
