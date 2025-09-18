@@ -1,52 +1,24 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import type { SeoInput } from '../../../utils/seo';
+
+const seo: SeoInput = {
+  title: 'AI Consulting | From concept to implementation roadmap',
+  description: 'Explore how AI can optimize your business. Consulting includes goal analysis, solution design, technical feasibility, and implementation roadmap.',
+  canonical: 'https://bangho.cz/en/services/ai-consulting.html',
+  ogTitle: 'AI Consulting',
+  ogDescription: 'Explore how AI can optimize your business.',
+  alternates: [
+    { href: 'https://bangho.cz/sluzby/konzultace-ai.html', hreflang: 'cs' },
+    { href: 'https://bangho.cz/en/services/ai-consulting.html', hreflang: 'en' },
+    { href: 'https://bangho.cz/en/services/ai-consulting.html', hreflang: 'x-default' },
+  ],
+};
 ---
 
-<Base lang="en">
+<Base lang="en" seo={seo} navClass="pt-25" navTopClass="pb-25">
   <Fragment slot="head">
-    <meta name="robots" content="index, follow" />
-        <meta name="content-language" content="English" />
-        <link
-          rel="canonical"
-          href="https://bangho.cz/en/services/ai-consulting.html"
-        />
-        <meta name="keywords" content="I wont say anything" />
-        <meta name="publisher" content="SEO Specialist Bangho Martin" />
-        <meta name="author" content="SEO Specialist Bangho Martin" />
-        <meta name="copyright" content="Copyright 2024" />
         <!--DOPLNIT -->
-        <link
-          rel="alternate"
-          hreflang="cs"
-          href="https://bangho.cz/sluzby/konzultace-ai.html"
-        />
-        <link
-          rel="alternate"
-          hreflang="en"
-          href="https://bangho.cz/en/services/ai-consulting.html"
-        />
-        <link
-          rel="alternate"
-          hreflang="x-default"
-          href="https://bangho.cz/en/services/ai-consulting.html"
-        />
-
-        <title>AI Consulting | From concept to implementation roadmap</title>
-        <meta
-          name="description"
-          content="Explore how AI can optimize your business. Consulting includes goal analysis, solution design, technical feasibility, and implementation roadmap."
-        />
-        <meta property="og:title" content="AI Consulting" />
-        <meta
-          property="og:description"
-          content="Explore how AI can optimize your business."
-        />
-        <meta property="og:locale" content="en" />
-        <meta property="og:site_name" content="bangho.cz" />
-        <meta
-          property="og:url"
-          content="https://bangho.cz/en/services/ai-consulting.html"
-        />
 
         <!-- reCAPTCHA v3 -->
         <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
@@ -412,359 +384,8 @@ import Base from '../../../layouts/Base.astro';
           }
         </script>
   </Fragment>
-
-  <div class="main-page-wrapper">
-        <!-- header-area start -->
-        <header class="theme-main-menu theme-menu-three pt-25">
-          <div class="top-header pb-25">
-            <div class="container">
-              <div class="row align-items-center">
-                <div
-                  class="col-12 d-flex flex-wrap align-items-center justify-content-between"
-                >
-                  <!-- Logo and email section -->
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <a href="../../en.html">
-                        <img
-                          src="../../assets/img/logo.ico"
-                          alt="Logo Martin Bangho"
-                          width="60"
-                          height="60"
-                        />
-                      </a>
-                    </div>
-                    <a href="mailto:martin@bangho.cz" class="text-white ms-4"
-                      >martin@bangho.cz</a
-                    >
-                  </div>
-
-                  <!-- Desktop menu -->
-                  <div class="col-xl-8 col-lg-8 d-none d-md-block">
-                    <ul
-                      class="list-none header-info d-flex align-items-center justify-content-center justify-content-lg-end"
-                    >
-                      <li class="d-md-inline-block">
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-geo-alt"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>Office</span>
-                            <div class="right-language">
-                              <div class="dropdown">
-                                <h6 class="text-white">
-                                  <a
-                                    href="https://maps.app.goo.gl/WQSv46E17hudhFTM8"
-                                    >Plzeň, TechTower</a
-                                  >
-                                </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="d-none d-md-inline-block">
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-clock"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>Available</span>
-                            <h6 class="text-white">8:30 - 17:30 CEST</h6>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-telephone"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>Phone number</span>
-                            <h6 class="text-white">
-                              <a href="tel:+420721956907">+420721956907</a>
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-block d-sm-none">
-                    <ul
-                      class="right-nav mb-0 d-flex align-items-center justify-content-end"
-                    >
-                      <li class="ms-auto">
-                        <div class="hamburger-menu">
-                          <a class="round-menu" href="javascript:void(0);">
-                            <i class="bi bi-list"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="main-header-area">
-            <div class="container">
-              <div class="row align-items-center">
-                <div class="col-xxl-10 col-xl-10 col-lg-10 d-none d-lg-block">
-                  <nav class="navbar navbar-expand-lg">
-                    <div
-                      class="collapse navbar-collapse"
-                      id="navbarSupportedContent"
-                    >
-                      <ul class="navbar-nav list-none ps-0 mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            SEO Services
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a class="dropdown-item" href="seo-audit.html"
-                                >SEO Audit</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="website-structure.html"
-                                >Website Structure</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seo-redesign.html"
-                                >Website Redesign</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="keyword-analysis.html"
-                                >Keyword Analysis</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="technical-seo-audit.html"
-                                >Technical SEO Audit</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="online-pr-linkbuilding.html"
-                                >Online PR
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="competitor-analysis.html"
-                                >Competitor Analysis</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="continuous-seo.html"
-                                >Continuous SEO</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seo-workshops.html"
-                                >SEO Workshops</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            Marketing
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="marketing-strategy.html"
-                                >Marketing Strategy</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="content-strategy.html"
-                                >Content Strategy</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="copywriting.html"
-                                >Copywriting</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="support-for-startups.html"
-                                >Support for Startups</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="marketing-workshops.html"
-                                >Marketing Workshops</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            AI for Businesses
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="llm-optimization-geo.html"
-                                >LLM Optimization GEO</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="ai-consulting.html"
-                                >AI Consulting</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="ai-agents-and-automation.html"
-                                >AI Agents and Automation</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="ai-workshop.html"
-                                >AI Workshop</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            href="https://bangho.cz/#works-section"
-                            >References</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            href="https://bangho.cz/#contact-section"
-                            >Contact</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-                <div class="col-xxl-2 col-xl-2 col-lg-2 d-none d-lg-block">
-                  <div class="language-switcher text-end">
-                    <div class="dropdown">
-                      <button
-                        class="btn dropdown-toggle text-white"
-                        type="button"
-                        id="languageDropdown"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <img
-                          src="../../assets/img/flags/gb.svg"
-                          alt="English"
-                          width="20"
-                          height="20"
-                          class="me-1"
-                        />
-                        EN
-                      </button>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="languageDropdown"
-                      >
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="ai-consulting.html"
-                            hreflang="en"
-                          >
-                            <img
-                              src="../../assets/img/flags/gb.svg"
-                              alt="English"
-                              width="20"
-                              height="20"
-                              class="me-2"
-                            />
-                            English
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="../../sluzby/konzultace-ai.html"
-                            hreflang="cs"
-                          >
-                            <img
-                              src="../../assets/img/flags/cz.svg"
-                              alt="Czech"
-                              width="20"
-                              height="20"
-                              class="me-2"
-                            />
-                            Čeština
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-        <!-- header-area end -->
-
-        <!-- slide-bar start -->
+<!-- header-area start -->
+<!-- slide-bar start -->
         <aside class="slide-bar">
           <div class="close-mobile-menu">
             <a href="javascript:void(0);" aria-label="Zavřít menu"
@@ -909,8 +530,8 @@ import Base from '../../../layouts/Base.astro';
             </div>
           </div>
         </aside>
-        <div class="body-overlay"></div>
-        <!-- slide-bar end -->
+        <div class="body-overlay">
+<!-- slide-bar end -->
 
         <main>
           <!--our-services start-->
@@ -1209,116 +830,9 @@ import Base from '../../../layouts/Base.astro';
           </section>
           <!--call-to-action end-->
         </main>
-        <!--footer-area start-->
-        <footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
-          <img
-            class="footer-shape shape-1b"
-            src="../../sluzby/img/shape/star-3b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-2b"
-            src="../../sluzby/img/shape/star-4b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-3b"
-            src="../../sluzby/img/shape/star-6b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-4b"
-            src="../../sluzby/img/shape/star-5b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-5b"
-            src="../../sluzby/img/shape/star-5b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-one"
-            src="../../sluzby/img/shape/line-round-7b.svg"
-            alt="footer shape"
-          />
-          <div class="container">
-            <div class="row gx-4 gx-xxl-5 mb-10">
-              <div class="col-xxl-1 col-md-1"></div>
-              <div class="col-xxl-4 col-md-4">
-                <div class="footer__widget mb-40">
-                  <h4 class="widget-title">Bangho Martin</h4>
-                  <p>
-                    I am an SEO consultant specializing in data-driven strategies
-                    that support business growth. I have experience collaborating
-                    across teams – from sales to development – in creating
-                    comprehensive marketing plans and strengthening brand presence
-                    in competitive markets.
-                  </p>
-                </div>
-              </div>
-              <div class="col-xxl-2 col-md-1"></div>
-              <div class="col-xxl-4 col-md-4">
-                <div class="footer__widget mb-40">
-                  <h4 class="widget-title">Potion</h4>
-                  <p>
-                    Potion is a newsletter that brings you the most important news
-                    from the world of SEO, AI, and marketing every 14 days –
-                    concisely, practically, and without fluff.
-                  </p>
-                </div>
-                <a class="theme_btn mb-80" href="contact.html"
-                  >Potion Newsletter</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="copyright-three">
-            <div class="container">
-              <div class="row gx-4 gx-xxl-5 pt-60 align-items-center">
-                <div class="col-xl-4 col-lg-6 pb-30">
-                  <ul
-                    class="fot-list text-center d-sm-flex align-items-center justify-content-center justify-content-lg-start"
-                  >
-                    <li>
-                      <a href="../processing-of-personal-data.html"
-                        >Privacy Policy</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-xl-4 col-lg-6 text-center pb-30">
-                  <p class="text-white mb-20">
-                    <a href="https://bangho.cz"
-                      >© 2025 Martin Bangho<br />SEO Consultant & AI Strategist</a
-                    >
-                  </p>
-                </div>
-                <div
-                  class="col-xl-4 col-lg-6 d-flex justify-content-center justify-content-lg-start justify-content-xl-end pb-30"
-                >
-                  <div class="footer__social mb-30">
-                    <a
-                      href="https://www.facebook.com/profile.php?id=100010412142790"
-                    >
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/johniq_/">
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mbangho/">
-                      <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://discord.com/users/170603121167433740">
-                      <i class="fab fa-discord"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-        <!--footer-area end-->
-      </div>
+  <Fragment slot="after-content">
+
+        </div>
 
       <!-- JS here -->
 
@@ -1344,4 +858,6 @@ import Base from '../../../layouts/Base.astro';
 
       <!--Custom JS here -->
       <script src="../../sluzby/js/main.js"></script>
+
+  </Fragment>
 </Base>

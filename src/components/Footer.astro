@@ -1,0 +1,120 @@
+---
+import type { Locale } from '../data/navigation';
+import { socialLinks } from '../data/socials';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'cs' }: Props = Astro.props;
+
+const content = {
+  cs: {
+    introTitle: 'Bangho Martin',
+    introText:
+      'Jsem SEO konzultant se specializací na datově řízené strategie, které podporují růst firem. Mám zkušenosti se spoluprací napříč týmy – od obchodu po vývoj – na tvorbě komplexních marketingových plánů a posilování značky v konkurenčních segmentech.',
+    promoTitle: 'Potion',
+    promoText:
+      'Potion je newsletter, který každých 14 dní přináší to nejdůležitější ze světa SEO, AI a marketingu – stručně, prakticky a bez balastu.',
+    ctaHref: 'https://www.potion.cz',
+    ctaLabel: 'Potion Newsletter',
+    privacyHref: '/zpracovani-osobnich-udaju',
+    privacyLabel: 'Zpracování osobních údajů',
+    copyright:
+      '© 2025 Martin Bangho<br />SEO Konzultant & AI Strategist',
+  },
+  en: {
+    introTitle: 'Bangho Martin',
+    introText:
+      'I am an SEO consultant specializing in data-driven strategies that support business growth. I have experience collaborating across teams – from sales to development – in creating comprehensive marketing plans and strengthening brand presence in competitive markets.',
+    promoTitle: 'Potion',
+    promoText:
+      'Potion is a newsletter that brings you the most important news from the world of SEO, AI, and marketing every 14 days – concisely, practically, and without fluff.',
+    ctaHref: 'https://www.potion.cz',
+    ctaLabel: 'Potion Newsletter',
+    privacyHref: '/en/processing-of-personal-data',
+    privacyLabel: 'Privacy Policy',
+    copyright:
+      '© 2025 Martin Bangho<br />SEO Consultant & AI Strategist',
+  },
+} as const satisfies Record<Locale, {
+  introTitle: string;
+  introText: string;
+  promoTitle: string;
+  promoText: string;
+  ctaHref: string;
+  ctaLabel: string;
+  privacyHref: string;
+  privacyLabel: string;
+  copyright: string;
+}>;
+
+const localeContent = content[lang];
+---
+<footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
+  <img class="footer-shape shape-1b" src="/sluzby/img/shape/star-3b.svg" alt="shape" />
+  <img class="footer-shape shape-2b" src="/sluzby/img/shape/star-4b.svg" alt="shape" />
+  <img class="footer-shape shape-3b" src="/sluzby/img/shape/star-6b.svg" alt="shape" />
+  <img class="footer-shape shape-4b" src="/sluzby/img/shape/star-5b.svg" alt="shape" />
+  <img class="footer-shape shape-5b" src="/sluzby/img/shape/star-5b.svg" alt="shape" />
+  <img class="fot-shape-one" src="/sluzby/img/shape/line-round-7b.svg" alt="footer shape" />
+  <div class="container">
+    <div class="row gx-4 gx-xxl-5 mb-10">
+      <div class="col-xxl-1 col-md-1"></div>
+      <div class="col-xxl-4 col-md-4">
+        <div class="footer__widget mb-40">
+          <h4 class="widget-title">{localeContent.introTitle}</h4>
+          <div class="footer-dots-divider"></div>
+          <p
+            style="color: #bdbdbd; line-height: 1.7; margin-bottom: 28px; margin-top: 18px;"
+          >
+            {localeContent.introText}
+          </p>
+        </div>
+      </div>
+      <div class="col-xxl-2 col-md-1"></div>
+      <div class="col-xxl-4 col-md-4">
+        <div class="footer__widget mb-40">
+          <h4 class="widget-title">{localeContent.promoTitle}</h4>
+          <div class="footer-dots-divider"></div>
+          <p
+            style="color: #bdbdbd; line-height: 1.7; margin-bottom: 28px; margin-top: 18px;"
+          >
+            {localeContent.promoText}
+          </p>
+          <slot name="cta">
+            <a class="theme_btn mb-80" href={localeContent.ctaHref}>{localeContent.ctaLabel}</a>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="copyright-three">
+    <div class="container">
+      <div class="row gx-4 gx-xxl-5 pt-60 align-items-center">
+        <div class="col-xl-4 col-lg-4 pb-30">
+          <ul class="fot-list text-center d-sm-flex align-items-center justify-content-center justify-content-lg-start">
+            <li>
+              <a href={localeContent.privacyHref}>{localeContent.privacyLabel}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xl-4 col-lg-4 text-center pb-30">
+          <p class="text-white mb-20">
+            <a href="https://bangho.cz" innerHTML={localeContent.copyright}></a>
+          </p>
+        </div>
+        <div class="col-xl-4 col-lg-4 d-flex justify-content-center justify-content-lg-start justify-content-xl-end pb-30">
+          <div class="footer__social mb-30 d-flex flex-row align-items-center gap-3">
+            {socialLinks.map((link) => (
+              <a href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
+                <i class={link.icon}></i>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
