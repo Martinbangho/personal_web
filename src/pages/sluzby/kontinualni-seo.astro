@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
+import NavCtas from '../../components/NavCtas.astro';
 import type { SeoInput } from '../../utils/seo';
+import { getServiceAlternates } from '../../data/serviceAlternates';
 
 const seo: SeoInput = {
   title: 'Kontinuální SEO správa | Dlouhodobá spolupráce',
@@ -8,15 +10,12 @@ const seo: SeoInput = {
   canonical: 'https://bangho.cz/sluzby/kontinualni-seo.html',
   ogTitle: 'Kontinuální SEO správa',
   ogDescription: 'Měsíční optimalizace a reporting výsledků.',
-  alternates: [
-    { href: 'https://bangho.cz/sluzby/kontinualni-seo.html', hreflang: 'cs' },
-    { href: 'https://bangho.cz/en/services/continuous-seo.html', hreflang: 'en' },
-    { href: 'https://bangho.cz/en/services/continuous-seo.html', hreflang: 'x-default' },
-  ],
+  alternates: getServiceAlternates('kontinualni-seo', 'cs'),
 };
 ---
 
 <Base seo={seo} navClass="pt-25" navTopClass="pb-25">
+  <NavCtas lang="cs" />
   <Fragment slot="head">
 
         <!-- reCAPTCHA v3 -->
@@ -383,152 +382,7 @@ const seo: SeoInput = {
           }
         </script>
   </Fragment>
-<!-- header-area start -->
-<!-- slide-bar start -->
-        <aside class="slide-bar">
-          <div class="close-mobile-menu">
-            <a href="javascript:void(0);" aria-label="Zavřít menu"
-              ><i class="fas fa-times"></i
-            ></a>
-          </div>
-          <div class="mobile-header px-1 py-2 d-flex align-items-center">
-            <a
-              href="/"
-              class="d-flex align-items-center text-white text-decoration-none"
-            >
-              <img
-                src="../assets/img/logo.ico"
-                alt="Logo"
-                width="46"
-                height="46"
-                class="me-2"
-              />
-            </a>
-            <span class="mobile-email">martin@bangho.cz</span>
-          </div>
-          <nav class="side-mobile-menu" aria-label="Mobilní menu">
-            <ul id="mobile-menu-active">
-              <li class="has-dropdown">
-                <a href="#">SEO Služby</a>
-                <ul class="sub-menu">
-                  <li><a href="seo-audit.html">SEO Audit</a></li>
-                  <li>
-                    <a href="navrh-struktury-webu.html">Návrh struktury webu</a>
-                  </li>
-                  <li>
-                    <a href="seo-redesign-webu.html">SEO a redesign webu</a>
-                  </li>
-                  <li>
-                    <a href="analyza-klicovych-slov.html"
-                      >Analýza klíčových slov</a
-                    >
-                  </li>
-                  <li>
-                    <a href="technicky-audit-webu.html">Technická SEO analýza</a>
-                  </li>
-                  <li>
-                    <a href="online-pr-a-linkbuilding.html"
-                      >Online PR a linkbuilding</a
-                    >
-                  </li>
-                  <li>
-                    <a href="analyza-konkurence.html">Analýza konkurence</a>
-                  </li>
-                  <li><a href="kontinualni-seo.html">Kontinuální SEO</a></li>
-                  <li><a href="seo-skoleni.html">SEO školení</a></li>
-                </ul>
-              </li>
-              <li class="has-dropdown">
-                <a href="#">Marketing</a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="marketingova-strategie.html"
-                      >Marketingová strategie</a
-                    >
-                  </li>
-                  <li>
-                    <a href="obsahova-strategie.html">Obsahová strategie</a>
-                  </li>
-                  <li><a href="copywritting.html">Copywriting</a></li>
-                  <li>
-                    <a href="podpora-pro-startupy.html">Podpora pro sturupy</a>
-                  </li>
-                  <li>
-                    <a href="skoleni-marketingu.html">Školení marketingu</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="has-dropdown">
-                <a href="#">AI pro firmy</a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="geo-optimalizace-llms.html">Optimalizace pro LLMs</a>
-                  </li>
-                  <li><a href="konzultace-ai.html">Konzultace AI</a></li>
-                  <li>
-                    <a href="ai-agenti-a-automatizace.html"
-                      >AI agenti a automatitace</a
-                    >
-                  </li>
-                  <li><a href="skoleni-ai.html">Školení AI</a></li>
-                </ul>
-              </li>
-              <li><a href="https://bangho.cz/#works-section">Reference</a></li>
-              <li><a href="https://blog.bangho.cz/">Blog</a></li>
-              <li><a href="https://bangho.cz/#contact-section">Kontakt</a></li>
-            </ul>
-          </nav>
-          <div class="mobile-language-switcher mt-3 px-3 pb-3">
-            <div class="dropdown">
-              <button
-                class="btn dropdown-toggle text-white px-2 py-2"
-                type="button"
-                id="mobileLangDropdown"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="../assets/img/flags/cz.svg"
-                  alt="Czech"
-                  width="20"
-                  height="20"
-                  class="me-2"
-                />
-                CZ
-              </button>
-              <ul class="dropdown-menu mt-2" aria-labelledby="mobileLangDropdown">
-                <li>
-                  <a class="dropdown-item py-2" href="kontinualni-seo.html"
-                    ><img
-                      src="../assets/img/flags/cz.svg"
-                      alt="Czech"
-                      width="20"
-                      height="20"
-                      class="me-2"
-                    />Čeština</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item py-2"
-                    href="../en/services/continuous-seo.html"
-                    ><img
-                      src="../assets/img/flags/gb.svg"
-                      alt="English"
-                      width="20"
-                      height="20"
-                      class="me-2"
-                    />English</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </aside>
-        <div class="body-overlay">
-<!-- slide-bar end -->
-
-        <main>
+<main>
           <!--our-services start-->
           <section class="service-details-wrapper pt-50 pb-30">
             <div class="container">
@@ -732,7 +586,7 @@ const seo: SeoInput = {
                         návrhem dalšího postupu.
                       </p>
                       <form
-                        action="../assets/mail.php"
+                        action="/assets/mail.php"
                         id="contact-form"
                         method="post"
                         role="form"
@@ -869,28 +723,28 @@ const seo: SeoInput = {
 
       <!-- JS here -->
 
-      <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
-      <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-      <script src="../assets/js/vendor/popper.min.js"></script>
-      <script src="../assets/js/vendor/bootstrap.min.js"></script>
-      <script src="../assets/js/slick.min.js"></script>
-      <script src="../assets/js/jquery.supermarquee.min.js"></script>
-      <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-      <script src="../assets/js/isotope.pkgd.min.js"></script>
-      <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-      <script src="../assets/js/metisMenu.min.js"></script>
-      <script src="../assets/js/wow.min.js"></script>
-      <script src="../assets/js/aos.js"></script>
-      <script src="../assets/js/jquery.counterup.min.js"></script>
-      <script src="../assets/js/jquery.waypoints.min.js"></script>
-      <script src="../assets/js/tilt.jquery.min.js"></script>
-      <script src="../assets/js/jquery.easypiechart.min.js"></script>
-      <script src="../assets/js/jquery-ui.js"></script>
-      <script src="../assets/js/jquery.scrollUp.min.js"></script>
-      <script src="../assets/js/plugins.js"></script>
+      <script src="/assets/js/vendor/modernizr-3.5.0.min.js" is:inline></script>
+      <script src="/assets/js/vendor/jquery-2.2.4.min.js" is:inline></script>
+      <script src="/assets/js/vendor/popper.min.js" is:inline></script>
+      <script src="/assets/js/vendor/bootstrap.min.js" is:inline></script>
+      <script src="/assets/js/slick.min.js" is:inline></script>
+      <script src="/assets/js/jquery.supermarquee.min.js" is:inline></script>
+      <script src="/assets/js/imagesloaded.pkgd.min.js" is:inline></script>
+      <script src="/assets/js/isotope.pkgd.min.js" is:inline></script>
+      <script src="/assets/js/jquery.magnific-popup.min.js" is:inline></script>
+      <script src="/assets/js/metisMenu.min.js" is:inline></script>
+      <script src="/assets/js/wow.min.js" is:inline></script>
+      <script src="/assets/js/aos.js" is:inline></script>
+      <script src="/assets/js/jquery.counterup.min.js" is:inline></script>
+      <script src="/assets/js/jquery.waypoints.min.js" is:inline></script>
+      <script src="/assets/js/tilt.jquery.min.js" is:inline></script>
+      <script src="/assets/js/jquery.easypiechart.min.js" is:inline></script>
+      <script src="/assets/js/jquery-ui.js" is:inline></script>
+      <script src="/assets/js/jquery.scrollUp.min.js" is:inline></script>
+      <script src="/assets/js/plugins.js" is:inline></script>
 
       <!--Custom JS here -->
-      <script src="js/main.js"></script>
+      <script src="/sluzby/js/main.js" is:inline></script>
 
   </Fragment>
 </Base>
