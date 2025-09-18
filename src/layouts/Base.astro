@@ -1,7 +1,25 @@
 ---
+import MainNav from '../components/MainNav.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../data/navigation';
+import type { SeoInput } from '../utils/seo';
+import { buildSeoTags } from '../utils/seo';
+
+interface Props {
+  lang?: Locale;
+  seo: SeoInput;
+  navClass?: string;
+  navTopClass?: string;
+}
+
 const {
   lang = 'cs',
-} = Astro.props;
+  seo,
+  navClass = '',
+  navTopClass = '',
+}: Props = Astro.props;
+
+const seoTags = seo ? buildSeoTags(lang, seo) : null;
 ---
 
 <!DOCTYPE html>
@@ -38,16 +56,49 @@ const {
     <link rel="stylesheet" href="/assets/css/aos.css" />
     <link rel="stylesheet" href="/assets/fonts/custom-font/css/clash-display.css" />
     <link rel="stylesheet" href="/sluzby/css/main.css" />
+    {seoTags && (
+      <>
+        <title>{seoTags.title}</title>
+        {seoTags.links.map((link) => (
+          <link
+            rel={link.rel}
+            href={link.href}
+            {...(link.hreflang ? { hreflang: link.hreflang } : {})}
+          />
+        ))}
+        {seoTags.meta.map((meta) =>
+          meta.name ? (
+            <meta name={meta.name} content={meta.content} />
+          ) : (
+            <meta property={meta.property!} content={meta.content} />
+          )
+        )}
+      </>
+    )}
     <slot name="head" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92X11QBKZL"></script>
     <script>
       {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+function gtag(){dataLayer.push(arguments);} 
 gtag('js', new Date());
 gtag('config', 'G-92X11QBKZL');`}
     </script>
   </head>
   <body>
-    <slot />
+    <div class="main-page-wrapper">
+      <MainNav
+        lang={lang}
+        headerClass={navClass || undefined}
+        topHeaderClass={navTopClass || undefined}
+      >
+        <slot slot="desktop-cta" name="nav-desktop-cta" />
+        <slot slot="mobile-cta" name="nav-mobile-cta" />
+      </MainNav>
+      <slot />
+      <Footer lang={lang}>
+        <slot slot="cta" name="footer-cta" />
+      </Footer>
+    </div>
+    <slot name="after-content" />
   </body>
 </html>

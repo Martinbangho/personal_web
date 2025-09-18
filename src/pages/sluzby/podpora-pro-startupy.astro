@@ -1,51 +1,23 @@
 ---
 import Base from '../../layouts/Base.astro';
+import type { SeoInput } from '../../utils/seo';
+
+const seo: SeoInput = {
+  title: 'Marketingová podpora pro startupy | Konzultace a mentoring',
+  description: 'Pomáhám startupům s marketingem od prvních kroků. Od strategie přes mentoring po zaškolení týmu a vstupu na nový trh.',
+  canonical: 'https://bangho.cz/sluzby/podpora-pro-startupy.html',
+  ogTitle: 'Marketing pro startupy',
+  ogDescription: 'Konzultace a mentoring pro mladé firmy.',
+  alternates: [
+    { href: 'https://bangho.cz/sluzby/podpora-pro-startupy.html', hreflang: 'cs' },
+    { href: 'https://bangho.cz/en/services/support-for-startups.html', hreflang: 'en' },
+    { href: 'https://bangho.cz/en/services/support-for-startups.html', hreflang: 'x-default' },
+  ],
+};
 ---
 
-<Base>
+<Base seo={seo} navClass="pt-25" navTopClass="pb-25">
   <Fragment slot="head">
-    <meta name="robots" content="index, follow" />
-        <meta name="content-language" content="Czech" />
-        <link
-          rel="canonical"
-          href="https://bangho.cz/sluzby/podpora-pro-startupy.html"
-        />
-        <meta name="keywords" content="Nic ti neřeknu" />
-        <meta name="publisher" content="SEO Specialista Martin Bangho" />
-        <meta name="author" content="SEO Specialista Martin Bangho " />
-        <meta name="copyright" content="Copyright 2024" />
-        <link
-          rel="alternate"
-          hreflang="cs"
-          href="https://bangho.cz/sluzby/podpora-pro-startupy.html"
-        />
-        <link
-          rel="alternate"
-          hreflang="en"
-          href="https://bangho.cz/en/services/support-for-startups.html"
-        />
-        <link
-          rel="alternate"
-          hreflang="x-default"
-          href="https://bangho.cz/en/services/support-for-startups.html"
-        />
-
-        <title>Marketingová podpora pro startupy | Konzultace a mentoring</title>
-        <meta
-          name="description"
-          content="Pomáhám startupům s marketingem od prvních kroků. Od strategie přes mentoring po zaškolení týmu a vstupu na nový trh."
-        />
-        <meta property="og:title" content="Marketing pro startupy" />
-        <meta
-          property="og:description"
-          content="Konzultace a mentoring pro mladé firmy."
-        />
-        <meta property="og:locale" content="cs" />
-        <meta property="og:site_name" content="bangho.cz" />
-        <meta
-          property="og:url"
-          content="https://bangho.cz/sluzby/podpora-pro-startupy.html"
-        />
 
         <!-- reCAPTCHA v3 -->
         <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
@@ -410,367 +382,9 @@ import Base from '../../layouts/Base.astro';
             }
           }
         </script>
-
-        <link rel="stylesheet" href="css/main.css" />
   </Fragment>
-
-  <div class="main-page-wrapper">
-        <!-- header-area start -->
-        <header class="theme-main-menu theme-menu-three pt-25">
-          <div class="top-header pb-25">
-            <div class="container">
-              <div class="row align-items-center">
-                <div
-                  class="col-12 d-flex flex-wrap align-items-center justify-content-between"
-                >
-                  <!-- Logo and email section -->
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <a href="/">
-                        <img
-                          src="../assets/img/logo.ico"
-                          alt="Logo Martin Bangho"
-                          width="60"
-                          height="60"
-                        />
-                      </a>
-                    </div>
-                    <a href="mailto:martin@bangho.cz" class="text-white ms-4"
-                      >martin@bangho.cz</a
-                    >
-                  </div>
-
-                  <!-- Desktop menu -->
-                  <div class="col-xl-8 col-lg-8 d-none d-md-block">
-                    <ul
-                      class="list-none header-info d-flex align-items-center justify-content-center justify-content-lg-end"
-                    >
-                      <li class="d-md-inline-block">
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-geo-alt"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>Kancelář</span>
-                            <div class="right-language">
-                              <div class="dropdown">
-                                <h6 class="text-white">
-                                  <a
-                                    href="https://maps.app.goo.gl/WQSv46E17hudhFTM8"
-                                    >Plzeň, TechTower</a
-                                  >
-                                </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="d-none d-md-inline-block">
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-clock"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>K dispozici</span>
-                            <h6 class="text-white">8:30 - 17:30</h6>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="header-info-box">
-                          <div class="icon">
-                            <i class="bi bi-telephone"></i>
-                          </div>
-                          <div class="text-content">
-                            <span>Telefon</span>
-                            <h6 class="text-white">
-                              <a href="tel:+420721956907">721956907</a>
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-block d-sm-none">
-                    <ul
-                      class="right-nav mb-0 d-flex align-items-center justify-content-end"
-                    >
-                      <li class="ms-auto">
-                        <div class="hamburger-menu">
-                          <a class="round-menu" href="javascript:void(0);">
-                            <i class="bi bi-list"></i>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="main-header-area">
-            <div class="container">
-              <div class="row align-items-center">
-                <div class="col-xxl-10 col-xl-10 col-lg-10 d-none d-lg-block">
-                  <nav class="navbar navbar-expand-lg">
-                    <div
-                      class="collapse navbar-collapse"
-                      id="navbarSupportedContent"
-                    >
-                      <ul class="navbar-nav list-none ps-0 mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            SEO Služby
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a class="dropdown-item" href="seo-audit.html"
-                                >SEO Audit</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="navrh-struktury-webu.html"
-                                >Návrh struktury webu</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="seo-redesign-webu.html"
-                                >SEO a redesign webu</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="analyza-klicovych-slov.html"
-                                >Analýza klíčových slov</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="technicky-audit-webu.html"
-                                >Technická SEO analýza</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="online-pr-a-linkbuilding.html"
-                                >Online PR a linkbuilding</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="analyza-konkurence.html"
-                                >Analýza konkurence</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="kontinualni-seo.html"
-                                >Kontinuální SEO</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seo-skoleni.html"
-                                >SEO školení</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            Marketing
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="marketingova-strategie.html"
-                                >Marketingová strategie</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="obsahova-strategie.html"
-                                >Obsahová strategie</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="copywritting.html"
-                                >Copywriting</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="podpora-pro-startupy.html"
-                                >Podpora pro sturupy</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="skoleni-marketingu.html"
-                                >Školení marketingu</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownOne"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            AI pro firmy
-                          </a>
-                          <ul
-                            class="dropdown-menu"
-                            aria-labelledby="navbarDropdownOne"
-                          >
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="geo-optimalizace-llms.html"
-                                >Optimalizace pro LLMs</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="konzultace-ai.html"
-                                >Konzultace AI</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="ai-agenti-a-automatizace.html"
-                                >AI agenti a automatitace</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="skoleni-ai.html"
-                                >Školení AI</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            href="https://bangho.cz/#works-section"
-                            >Reference</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="https://blog.bangho.cz/"
-                            >Blog</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            href="https://bangho.cz/#contact-section"
-                            >Kontakt</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-                <div class="col-xxl-2 col-xl-2 col-lg-2 d-none d-lg-block">
-                  <div class="language-switcher text-end">
-                    <div class="dropdown">
-                      <button
-                        class="btn dropdown-toggle text-white"
-                        type="button"
-                        id="languageDropdown"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <img
-                          src="../assets/img/flags/cz.svg"
-                          alt="Czech"
-                          width="20"
-                          height="20"
-                          class="me-1"
-                        />
-                        CZ
-                      </button>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="languageDropdown"
-                      >
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="podpora-pro-startupy.html"
-                          >
-                            <img
-                              src="../assets/img/flags/cz.svg"
-                              alt="Czech"
-                              width="20"
-                              height="20"
-                              class="me-2"
-                            />
-                            Čeština
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="../en/services/support-for-startups.html"
-                          >
-                            <img
-                              src="../assets/img/flags/gb.svg"
-                              alt="English"
-                              width="20"
-                              height="20"
-                              class="me-2"
-                            />
-                            English
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-        <!-- header-area end -->
-
-        <!-- slide-bar start -->
+<!-- header-area start -->
+<!-- slide-bar start -->
         <aside class="slide-bar">
           <div class="close-mobile-menu">
             <a href="javascript:void(0);" aria-label="Zavřít menu"
@@ -911,8 +525,8 @@ import Base from '../../layouts/Base.astro';
             </div>
           </div>
         </aside>
-        <div class="body-overlay"></div>
-        <!-- slide-bar end -->
+        <div class="body-overlay">
+<!-- slide-bar end -->
 
         <main>
           <!--our-services start-->
@@ -1198,115 +812,9 @@ import Base from '../../layouts/Base.astro';
           </section>
           <!--call-to-action end-->
         </main>
-        <!--footer-area start-->
-        <footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
-          <img
-            class="footer-shape shape-1b"
-            src="img/shape/star-3b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-2b"
-            src="img/shape/star-4b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-3b"
-            src="img/shape/star-6b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-4b"
-            src="img/shape/star-5b.svg"
-            alt="shape"
-          />
-          <img
-            class="footer-shape shape-5b"
-            src="img/shape/star-5b.svg"
-            alt="shape"
-          />
-          <img
-            class="fot-shape-one"
-            src="img/shape/line-round-7b.svg"
-            alt="footer shape"
-          />
-          <div class="container">
-            <div class="row gx-4 gx-xxl-5 mb-10">
-              <div class="col-xxl-1 col-md-1"></div>
-              <div class="col-xxl-4 col-md-4">
-                <div class="footer__widget mb-40">
-                  <h4 class="widget-title">Bangho Martin</h4>
-                  <p>
-                    Jsem SEO konzultant se specializací na datově řízené
-                    strategie, které podporují růst firem. Mám zkušenosti se
-                    spoluprací napříč týmy – od obchodu po vývoj – na tvorbě
-                    komplexních marketingových plánů a posilování značky v
-                    konkurenčních segmentech.
-                  </p>
-                </div>
-              </div>
-              <div class="col-xxl-2 col-md-1"></div>
-              <div class="col-xxl-4 col-md-4">
-                <div class="footer__widget mb-40">
-                  <h4 class="widget-title">Potion</h4>
-                  <p>
-                    Potion je newsletter, který každých 14 dní přináší to
-                    nejdůležitější ze světa SEO, AI a marketingu – stručně,
-                    prakticky a bez balastu.
-                  </p>
-                </div>
-                <a class="theme_btn mb-80" href="contact.html"
-                  >Potion Newsletter</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="copyright-three">
-            <div class="container">
-              <div class="row gx-4 gx-xxl-5 pt-60 align-items-center">
-                <div class="col-xl-4 col-lg-6 pb-30">
-                  <ul
-                    class="fot-list text-center d-sm-flex align-items-center justify-content-center justify-content-lg-start"
-                  >
-                    <li>
-                      <a href="faq.html">Zpracování osobních údajů</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-xl-4 col-lg-6 text-center pb-30">
-                  <p class="text-white mb-20">
-                    <a href="https://bangho.cz"
-                      >© 2025 Martin Bangho<br />SEO Konzultant & Content
-                      Stratég</a
-                    >
-                  </p>
-                </div>
-                <div
-                  class="col-xl-4 col-lg-6 d-flex justify-content-center justify-content-lg-start justify-content-xl-end pb-30"
-                >
-                  <div class="footer__social mb-30">
-                    <a
-                      href="https://www.facebook.com/profile.php?id=100010412142790"
-                    >
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/johniq_/">
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mbangho/">
-                      <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://discord.com/users/170603121167433740">
-                      <i class="fab fa-discord"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-        <!--footer-area end-->
-      </div>
+  <Fragment slot="after-content">
+
+        </div>
 
       <!-- JS here -->
 
@@ -1332,4 +840,6 @@ import Base from '../../layouts/Base.astro';
 
       <!--Custom JS here -->
       <script src="js/main.js"></script>
+
+  </Fragment>
 </Base>

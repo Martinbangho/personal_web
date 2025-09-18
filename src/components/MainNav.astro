@@ -1,0 +1,267 @@
+---
+import type { Locale } from '../data/navigation';
+import { getNavigation } from '../data/navigation';
+
+interface Props {
+  lang?: Locale;
+  headerClass?: string;
+  topHeaderClass?: string;
+}
+
+const {
+  lang = 'cs',
+  headerClass = '',
+  topHeaderClass = '',
+}: Props = Astro.props;
+
+const navigation = getNavigation(lang);
+const headerClasses = ['theme-main-menu', 'theme-menu-three', headerClass]
+  .filter(Boolean)
+  .join(' ');
+const topHeaderClasses = ['top-header', topHeaderClass].filter(Boolean).join(' ');
+const hasDesktopCta = Astro.slots.has('desktop-cta');
+const hasMobileCta = Astro.slots.has('mobile-cta');
+const activeLanguage =
+  navigation.languages.find((language) => language.code === lang) ?? navigation.languages[0];
+
+const externalAttrs = {
+  target: '_blank',
+  rel: 'noreferrer',
+};
+---
+<header class={headerClasses}>
+  <div class={topHeaderClasses}>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 d-flex flex-wrap align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <div>
+              <a href={navigation.logoHref}>
+                <img
+                  src="/assets/img/logo.ico"
+                  alt="Logo Martin Bangho"
+                  width="60"
+                  height="60"
+                />
+              </a>
+            </div>
+            <a href={`mailto:${navigation.email}`} class="text-white ms-4">{navigation.email}</a>
+          </div>
+          <div class="col-xl-6 col-lg-8 d-none d-md-block">
+            <ul class="list-none header-info d-flex align-items-center justify-content-center justify-content-lg-end">
+              {navigation.contactBoxes.map((box) => {
+                const itemClass = box.className ?? undefined;
+                const linkAttrs = box.external ? externalAttrs : {};
+                return (
+                  <li class={itemClass}>
+                    <div class="header-info-box">
+                      <div class="icon">
+                        <i class={box.icon}></i>
+                      </div>
+                      <div class="text-content">
+                        <span>{box.label}</span>
+                        <h6 class="text-white">
+                          {box.href ? (
+                            <a href={box.href} {...linkAttrs}>{box.value}</a>
+                          ) : (
+                            box.value
+                          )}
+                        </h6>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div class="d-inline-flex d-lg-none ms-auto">
+            <ul class="right-nav mb-0 d-flex align-items-center justify-content-end">
+              <li class="ms-auto">
+                <div class="hamburger-menu">
+                  <a class="round-menu" href="javascript:void(0);" aria-label="Otevřít menu">
+                    <i class="bi bi-list"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-header-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xxl-10 col-xl-10 col-lg-10 d-none d-lg-block">
+          <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav list-none ps-0 mb-2 mb-lg-0">
+                {navigation.menu.map((item, index) => {
+                  const hasChildren = Array.isArray(item.items) && item.items.length > 0;
+                  const dropdownId = `nav-dropdown-${index}`;
+                  const linkAttrs = item.external ? externalAttrs : {};
+
+                  return (
+                    <li class={`nav-item${hasChildren ? ' dropdown' : ''}`}>
+                      <a
+                        class={`nav-link${hasChildren ? ' dropdown-toggle' : ''}`}
+                        href={item.href ?? '#'}
+                        {...(hasChildren
+                          ? {
+                              id: dropdownId,
+                              role: 'button',
+                              'data-bs-toggle': 'dropdown',
+                              'aria-expanded': 'false',
+                            }
+                          : {})}
+                        {...linkAttrs}
+                      >
+                        {item.label}
+                      </a>
+                      {hasChildren && (
+                        <ul class="dropdown-menu" aria-labelledby={dropdownId}>
+                          {item.items?.map((child) => {
+                            const childAttrs = child.external ? externalAttrs : {};
+                            return (
+                              <li>
+                                <a class="dropdown-item" href={child.href ?? '#'} {...childAttrs}>
+                                  {child.label}
+                                </a>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 d-none d-lg-flex flex-column align-items-end gap-3">
+          <div class="language-switcher text-end w-100">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle text-white"
+                type="button"
+                id="languageDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src={activeLanguage.flag}
+                  alt={activeLanguage.label}
+                  width="20"
+                  height="20"
+                  class="me-1"
+                />
+                {activeLanguage.shortLabel}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                {navigation.languages.map((language) => (
+                  <li>
+                    <a class="dropdown-item" href={language.href} hreflang={language.hreflang}>
+                      <img
+                        src={language.flag}
+                        alt={language.label}
+                        width="20"
+                        height="20"
+                        class="me-2"
+                      />
+                      {language.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          {hasDesktopCta && (
+            <div class="nav-cta">
+              <slot name="desktop-cta" />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<aside class="slide-bar">
+  <div class="close-mobile-menu">
+    <a href="javascript:void(0);" aria-label="Zavřít menu"><i class="fas fa-times"></i></a>
+  </div>
+  <div class="mobile-header px-1 py-2 d-flex align-items-center">
+    <a href={navigation.logoHref} class="d-flex align-items-center text-white text-decoration-none">
+      <img src="/assets/img/logo.ico" alt="Logo" width="46" height="46" class="me-2" />
+    </a>
+    <span class="mobile-email">{navigation.email}</span>
+  </div>
+  <nav class="side-mobile-menu" aria-label="Mobilní menu">
+    <ul id="mobile-menu-active">
+      {navigation.menu.map((item) => {
+        const hasChildren = Array.isArray(item.items) && item.items.length > 0;
+        const linkAttrs = item.external ? externalAttrs : {};
+
+        return (
+          <li class={hasChildren ? 'has-dropdown' : undefined}>
+            <a href={item.href ?? '#'} {...linkAttrs}>{item.label}</a>
+            {hasChildren && (
+              <ul class="sub-menu">
+                {item.items?.map((child) => {
+                  const childAttrs = child.external ? externalAttrs : {};
+                  return (
+                    <li>
+                      <a href={child.href ?? '#'} {...childAttrs}>{child.label}</a>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+  {hasMobileCta && (
+    <div class="mobile-nav-cta px-3 pb-3">
+      <slot name="mobile-cta" />
+    </div>
+  )}
+  <div class="mobile-language-switcher mt-3 px-3 pb-3">
+    <div class="dropdown">
+      <button
+        class="btn dropdown-toggle text-white px-2 py-2"
+        type="button"
+        id="mobileLangDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src={activeLanguage.flag}
+          alt={activeLanguage.label}
+          width="20"
+          height="20"
+          class="me-2"
+        />
+        {activeLanguage.shortLabel}
+      </button>
+      <ul class="dropdown-menu mt-2" aria-labelledby="mobileLangDropdown">
+        {navigation.languages.map((language) => (
+          <li>
+            <a class="dropdown-item py-2" href={language.href} hreflang={language.hreflang}>
+              <img
+                src={language.flag}
+                alt={language.label}
+                width="20"
+                height="20"
+                class="me-2"
+              />
+              {language.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="body-overlay"></div>
