@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavCtas from '../../components/NavCtas.astro';
+import type { SeoInput } from '../../utils/seo';
+import {
+  buildProfessionalServiceJsonLd,
+  buildWebsiteJsonLd,
+  getServiceAlternates,
+  getServiceEntry,
+  getServiceStaticPaths,
+  getServiceUrl,
+} from '../../utils/services';
+
+export async function getStaticPaths() {
+  return getServiceStaticPaths('cs');
+}
+
+const slug = Astro.params.slug!;
+const entry = await getServiceEntry('cs', slug);
+
+if (!entry) {
+  throw new Error(`Service with slug "${slug}" (cs) was not found.`);
+}
+
+const { Content } = await entry.render();
+const alternates = await getServiceAlternates(entry);
+const canonicalUrl = getServiceUrl('cs', entry.data.entrySlug);
+
+const seo: SeoInput = {
+  title: entry.data.seo.title,
+  description: entry.data.seo.description,
+  canonical: canonicalUrl,
+  ogTitle: entry.data.seo.ogTitle ?? entry.data.seo.title,
+  ogDescription: entry.data.seo.ogDescription ?? entry.data.seo.description,
+  ogUrl: canonicalUrl,
+  alternates,
+};
+
+const websiteJsonLd = buildWebsiteJsonLd('cs');
+const professionalServiceJsonLd = await buildProfessionalServiceJsonLd('cs');
+---
+<Base seo={seo} navClass="pt-25" navTopClass="pb-25">
+  <NavCtas lang="cs" />
+  <Fragment slot="head">
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
+    <script>
+      {`grecaptcha.ready(function () {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    grecaptcha
+      .execute('6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI', {
+        action: 'submit',
+      })
+      .then(function (token) {
+        const responseInput = document.getElementById('recaptchaResponse');
+        if (responseInput) {
+          responseInput.value = token;
+        }
+        form.submit();
+      });
+  });
+});`}
+    </script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {JSON.stringify(websiteJsonLd)}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify(professionalServiceJsonLd)}
+    </script>
+  </Fragment>
+  <main>
+    <Content />
+  </main>
+  <Fragment slot="after-content">
+    <script src="/assets/js/vendor/modernizr-3.5.0.min.js" is:inline></script>
+    <script src="/assets/js/vendor/jquery-2.2.4.min.js" is:inline></script>
+    <script src="/assets/js/vendor/popper.min.js" is:inline></script>
+    <script src="/assets/js/vendor/bootstrap.min.js" is:inline></script>
+    <script src="/assets/js/slick.min.js" is:inline></script>
+    <script src="/assets/js/jquery.supermarquee.min.js" is:inline></script>
+    <script src="/assets/js/imagesloaded.pkgd.min.js" is:inline></script>
+    <script src="/assets/js/isotope.pkgd.min.js" is:inline></script>
+    <script src="/assets/js/jquery.magnific-popup.min.js" is:inline></script>
+    <script src="/assets/js/metisMenu.min.js" is:inline></script>
+    <script src="/assets/js/wow.min.js" is:inline></script>
+    <script src="/assets/js/aos.js" is:inline></script>
+    <script src="/assets/js/jquery.counterup.min.js" is:inline></script>
+    <script src="/assets/js/jquery.waypoints.min.js" is:inline></script>
+    <script src="/assets/js/tilt.jquery.min.js" is:inline></script>
+    <script src="/assets/js/jquery.easypiechart.min.js" is:inline></script>
+    <script src="/assets/js/jquery-ui.js" is:inline></script>
+    <script src="/assets/js/jquery.scrollUp.min.js" is:inline></script>
+    <script src="/assets/js/plugins.js" is:inline></script>
+    <script src="/sluzby/js/main.js" is:inline></script>
+  </Fragment>
+</Base>
