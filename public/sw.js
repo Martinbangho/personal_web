@@ -3,9 +3,7 @@ const CACHE_NAME = 'bangho-v1';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/assets/css/main.min.css',
     '/assets/css/bootstrap.min.css',
-    '/assets/css/responsive.css',
     '/assets/js/main.min.js',
     '/assets/js/jquery.min.js',
     '/assets/img/hero/me.webp',

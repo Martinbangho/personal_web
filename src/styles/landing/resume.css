@@ -1,0 +1,124 @@
+.resume-section {
+	padding-top: 120px;
+	padding-bottom: 90px;
+	background: var(--tj-theme-accent-1);
+}
+.resume-section .resume-item {
+	margin-right: 100px;
+}
+.resume-widget .resume-item {
+	position: relative;
+	padding: 20px 30px;
+	margin-bottom: 30px;
+	border-radius: 20px;
+	background: var(--tj-theme-accent-2);
+	z-index: 10;
+}
+.resume-widget .resume-item:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: opacity 0.5s linear;
+	-o-transition: opacity 0.5s linear;
+	transition: opacity 0.5s linear;
+	opacity: 0;
+	z-index: -1;
+	border-radius: 20px;
+}
+.resume-widget .resume-item:hover:before {
+	background: var(--tj-theme-primary);
+	background: -o-linear-gradient(
+		190deg,
+		var(--tj-theme-secondary) 0%,
+		var(--tj-theme-primary) 100%
+	);
+	background: linear-gradient(
+		260deg,
+		var(--tj-theme-secondary) 0%,
+		var(--tj-theme-primary) 100%
+	);
+	opacity: 1;
+}
+.resume-widget .resume-item .time {
+	color: var(--tj-theme-primary);
+	font-size: 20px;
+	font-weight: 800;
+	margin-bottom: 8px;
+}
+.resume-widget .resume-item:hover .time {
+	color: var(--tj-white);
+}
+.resume-widget .resume-item .resume-title {
+	font-size: 25px;
+	text-transform: uppercase;
+	margin-bottom: 8px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+.resume-widget .resume-item .resume-title {
+		font-size: 23px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+.resume-section {
+		padding-top: 100px;
+		padding-bottom: 70px;
+	}
+	.section-header .section-title {
+		font-size: 40px;
+		margin: 0;
+	}
+	.resume-section .resume-item {
+		margin-right: 0;
+	}
+	.resume-widget .resume-item .resume-title {
+		font-size: 23px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.resume-section {
+		padding-top: 80px;
+		padding-bottom: 50px;
+	}
+	.section-header .section-title {
+		font-size: 35px;
+		margin: 0;
+	}
+	.resume-section .resume-item {
+		margin-right: 0;
+		padding: 20px 15px;
+	}
+	.resume-widget .resume-item .time {
+		font-size: 15px;
+	}
+	.resume-widget .resume-item .resume-title {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+.resume-section {
+		padding-top: 60px;
+		padding-bottom: 30px;
+	}
+	.section-header .section-title {
+		font-size: 30px;
+		margin: 0;
+	}
+	.resume-section .resume-item {
+		margin-right: 0;
+		padding: 20px 15px;
+	}
+	.resume-widget .resume-item .time {
+		font-size: 15px;
+	}
+	.resume-widget .resume-item .resume-title {
+		font-size: 18px;
+		margin-bottom: 0;
+	}
+}
