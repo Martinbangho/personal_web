@@ -1,0 +1,124 @@
+.skills-section {
+	padding-top: 120px;
+	padding-bottom: 120px;
+	background: var(--tj-theme-accent-1);
+}
+
+.skills-section .section-header {
+	margin-left: auto;
+	margin-right: auto;
+}
+.skills-widget {
+	gap: 20px;
+	row-gap: 30px;
+}
+.skills-widget .skill-item {
+	max-width: 180px;
+	width: 100%;
+	text-align: center;
+}
+
+.skills-widget .skill-inner {
+	border-radius: 25px;
+	padding: 40px 15px 30px;
+	background: var(--tj-theme-accent-2);
+	border: 1px solid transparent;
+	margin-bottom: 15px;
+	-webkit-transition: 0.6s;
+	-o-transition: 0.6s;
+	transition: 0.6s;
+}
+
+.skills-widget .skill-item:hover .skill-inner {
+	background: var(--tj-theme-secondary);
+	border: 1px solid var(--tj-theme-primary);
+}
+
+.skills-widget .skill-item .icon-box {
+	max-width: 60px;
+	width: 100%;
+	margin: 0 auto 30px;
+}
+
+.skills-widget .skill-item .icon-box img {
+	filter: grayscale(90%);
+	-webkit-filter: grayscale(90%);
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.skills-widget .skill-item:hover .icon-box img {
+	filter: grayscale(0);
+	-webkit-filter: grayscale(0);
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.skills-widget .skill-item .number {
+	color: var(--tj-grey-1);
+	font-weight: 800;
+	font-size: 20px;
+	line-height: 1;
+}
+
+.skills-widget .skill-item:hover .number {
+	color: var(--tj-theme-primary);
+}
+
+.skills-widget .skill-item p {
+	color: var(--tj-theme-primary);
+	margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+.skills-widget .skill-item {
+		max-width: 165px;
+	}
+	.skills-widget .skill-inner {
+		padding: 30px 15px 25px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+.skills-section {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	.skills-widget .skill-item {
+		max-width: 165px;
+	}
+	.skills-widget .skill-inner {
+		padding: 30px 15px 25px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.skills-section {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.skills-widget .skill-item {
+		max-width: 165px;
+	}
+	.skills-widget .skill-inner {
+		padding: 30px 15px 25px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+.skills-section {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+	.skills-widget .skill-item {
+		max-width: 165px;
+	}
+	.skills-widget .skill-inner {
+		padding: 25px 15px 25px;
+	}
+	.skills-widget .skill-item .icon-box {
+		margin: 0 auto 20px;
+	}
+}

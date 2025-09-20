@@ -1,0 +1,120 @@
+.testimonial-section {
+	padding-top: 120px;
+	padding-bottom: 120px;
+	background: var(--tj-theme-accent-1);
+	position: relative;
+}
+.testimonial-section:before {
+	content: "";
+	position: absolute;
+	left: 5%;
+	bottom: 15%;
+	width: 20%;
+	height: 20%;
+	border-radius: 50%;
+	background: var(--tj-theme-primary);
+	background: -o-linear-gradient(
+		190deg,
+		var(--tj-theme-primary) 0%,
+		rgba(115, 67, 210, 0) 100%
+	);
+	background: linear-gradient(
+		260deg,
+		var(--tj-theme-primary) 0%,
+		rgba(115, 67, 210, 0) 100%
+	);
+	-webkit-filter: blur(150px);
+	filter: blur(150px);
+}
+.testimonials-widget .testimonial-item {
+	background: var(--tj-theme-accent-2);
+	max-width: 300px;
+	width: 100%;
+	border-radius: 15px;
+	padding: 25px;
+}
+.testimonials-widget .testimonial-item .top-area {
+	margin-bottom: 20px;
+}
+.testimonials-widget .testimonial-item .image-box {
+	width: 40%;
+	max-width: 120px;
+}
+.testimonials-widget .testimonial-item .image-box img {
+	border-radius: 5px 5px 5px 125px;
+}
+.testimonials-widget .testimonial-item .logo-box {
+	max-width: 100px;
+	width: 100%;
+}
+.testimonials-widget .testimonial-item .icon-box {
+	margin-bottom: 25px;
+}
+.testimonials-widget .testimonial-item .icon-box svg {
+	margin-right: 5px;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition-delay: 1.5s;
+	transition: 0.4s;
+}
+.testimonials-widget
+	.owl-item.active
+	.testimonial-item
+	.icon-box
+	svg:first-child {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.testimonials-widget
+	.owl-item.active
+	.testimonial-item
+	.icon-box
+	svg:last-child {
+	-webkit-transform: translateX(-22px) rotate(135deg);
+	-ms-transform: translateX(-22px) rotate(135deg);
+	transform: translateX(-22px) rotate(135deg);
+}
+.testimonials-widget .testimonial-item .quote {
+	font-size: 16px;
+	margin-bottom: 50px;
+}
+.testimonials-widget .testimonial-item .name {
+	font-size: 18px;
+	margin-bottom: 5px;
+	color: var(--tj-white);
+}
+.testimonials-widget .testimonial-item span.designation {
+	font-size: 14px;
+	display: block;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+.testimonial-section {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.testimonial-section {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	.testimonials-widget .testimonial-item {
+		max-width: 100%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+.testimonial-section {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+	.testimonials-widget .testimonial-item {
+		max-width: 100%;
+	}
+	.testimonials-widget .testimonial-item .quote {
+		margin-bottom: 30px;
+	}
+}
