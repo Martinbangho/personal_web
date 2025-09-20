@@ -266,3 +266,16 @@ const externalAttrs = {
   </div>
 </aside>
 <div class="body-overlay"></div>
+<script type="module" is:inline>
+  const loadNavigation = () => {
+    import('../scripts/navigation.ts').then(({ default: initNavigation }) => {
+      initNavigation();
+    });
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(loadNavigation);
+  } else {
+    window.addEventListener('load', loadNavigation, { once: true });
+  }
+</script>

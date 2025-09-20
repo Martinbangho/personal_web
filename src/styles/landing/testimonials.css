@@ -27,11 +27,11 @@
 	filter: blur(150px);
 }
 .testimonials-widget .testimonial-item {
-	background: var(--tj-theme-accent-2);
-	max-width: 300px;
-	width: 100%;
-	border-radius: 15px;
-	padding: 25px;
+        background: var(--tj-theme-accent-2);
+        max-width: 100%;
+        width: 100%;
+        border-radius: 15px;
+        padding: 25px;
 }
 .testimonials-widget .testimonial-item .top-area {
 	margin-bottom: 20px;
@@ -57,23 +57,15 @@
 	transition-delay: 1.5s;
 	transition: 0.4s;
 }
-.testimonials-widget
-	.owl-item.active
-	.testimonial-item
-	.icon-box
-	svg:first-child {
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
+.testimonials-widget .testimonial-item .icon-box svg:first-child {
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
 }
-.testimonials-widget
-	.owl-item.active
-	.testimonial-item
-	.icon-box
-	svg:last-child {
-	-webkit-transform: translateX(-22px) rotate(135deg);
-	-ms-transform: translateX(-22px) rotate(135deg);
-	transform: translateX(-22px) rotate(135deg);
+.testimonials-widget .testimonial-item .icon-box svg:last-child {
+        -webkit-transform: translateX(-22px) rotate(135deg);
+        -ms-transform: translateX(-22px) rotate(135deg);
+        transform: translateX(-22px) rotate(135deg);
 }
 .testimonials-widget .testimonial-item .quote {
 	font-size: 16px;

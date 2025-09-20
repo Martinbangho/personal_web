@@ -4,8 +4,6 @@ const urlsToCache = [
     '/',
     '/index.html',
     '/assets/css/bootstrap.min.css',
-    '/assets/js/main.min.js',
-    '/assets/js/jquery.min.js',
     '/assets/img/hero/me.webp',
     '/assets/img/logo.ico'
 ];

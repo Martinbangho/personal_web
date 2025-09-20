@@ -1,0 +1,49 @@
+.js-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--carousel-gap, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+}
+
+.js-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.js-carousel > * {
+  flex: 0 0 calc((100% - (var(--carousel-items, 1) - 1) * var(--carousel-gap, 0px)) / var(--carousel-items, 1));
+  scroll-snap-align: var(--carousel-snap, start);
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: var(--tj-theme-primary);
+  opacity: 0.6;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-dot.is-active {
+  width: 30px;
+  opacity: 1;
+}
+
+.carousel-dot:focus-visible {
+  outline: 2px solid var(--tj-theme-primary);
+  outline-offset: 2px;
+}
