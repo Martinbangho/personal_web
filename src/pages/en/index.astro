@@ -8,6 +8,8 @@ import '../../styles/landing/resume.css';
 import '../../styles/landing/skills.css';
 import '../../styles/landing/testimonials.css';
 import '../../styles/landing/contact.css';
+import '../../styles/components/carousel.css';
+import '../../styles/components/modal.css';
 
 const seo: SeoInput = {
   title: 'Martin Bangho | SEO Consultant & AI Strategist',
@@ -512,7 +514,7 @@ const seo: SeoInput = {
 
                               <!--Hidden services-->
 
-                              <div class="hidden-services" style="display: none">
+                              <div class="hidden-services" hidden>
                                   <div class="service-item d-flex flex-wrap align-items-center fadeInUp" data-wow-delay="0.1s ">
                                       <div class="left-box d-flex flex-wrap align-items-center">
                                           <span class="number">05</span>
@@ -557,9 +559,14 @@ const seo: SeoInput = {
                               </div>
                               <!-- Button -->
                               <div class="text-center mt-6 pt-3 flex-wrap align-items-center wow fadeInUp" data-wow-delay="0.1s ">
-                                  <button id="show-more-btn" class="btn tj-btn-primary">
-                      Show More
-                    </button>
+                                  <button
+                                    id="show-more-btn"
+                                    class="btn tj-btn-primary"
+                                    data-collapsed-label="Show More"
+                                    data-expanded-label="Show Less"
+                                  >
+                                    Show More
+                                  </button>
                               </div>
                           </div>
                       </div>
@@ -597,7 +604,7 @@ const seo: SeoInput = {
                                       <h3 class="portfolio-title">O2 Czech Republic</h3>
                                       <p>Long-term collaboration on brand development.</p>
                                       <i class="flaticon-up-right-arrow"></i>
-                                      <button data-mfp-src="#projekty_O2" class="portfolio-link modal-popup"></button>
+                                      <button data-modal-target="#projekty_O2" class="portfolio-link modal-popup"></button>
                                   </div>
                               </div>
                               <div class="portfolio-item">
@@ -610,7 +617,7 @@ const seo: SeoInput = {
                                           Long-term collaboration on SEO, including content planning.
                                       </p>
                                       <i class="flaticon-up-right-arrow"></i>
-                                      <button data-mfp-src="#projekty_GEN" class="portfolio-link modal-popup"></button>
+                                      <button data-modal-target="#projekty_GEN" class="portfolio-link modal-popup"></button>
                                   </div>
                               </div>
                           </div>
@@ -669,7 +676,11 @@ const seo: SeoInput = {
           <!-- PORTFOLIO SECTION END -->
 
           <!-- start: O2 -->
-          <div id="projekty_O2" class="popup_content_area zoom-anim-dialog mfp-hide">
+        <div
+          id="projekty_O2"
+          class="popup_content_area zoom-anim-dialog mfp-hide"
+          hidden
+        >
               <div class="popup_modal_content">
                   <div class="portfolio_info">
                       <div class="portfolio_info_text">
@@ -700,7 +711,7 @@ const seo: SeoInput = {
                       </div>
                   </div>
 
-                  <div class="portfolio_gallery owl-carousel">
+                  <div class="portfolio_gallery" data-carousel="portfolio">
                       <div class="gallery_item">
                           <img src="/assets/img/portfolio-gallery/o2_2.png" alt="" />
                       </div>
@@ -752,7 +763,7 @@ const seo: SeoInput = {
                   <div class="portfolio_navigation">
                       <div class="navigation_item prev-project"></div>
                       <div class="navigation_item next-project">
-                          <a href="" data-mfp-src="#projekty_SOFA" class="project modal-popup portfolio-link">
+                          <a href="" data-modal-target="#projekty_SOFA" class="project modal-popup portfolio-link">
                               <div class="nav_project">
                                   <div class="label">Next Client</div>
                                   <h3 class="title">Society for All, z.s.</h3>
@@ -766,7 +777,11 @@ const seo: SeoInput = {
           <!-- end: O2 -->
 
           <!-- start: SOFA -->
-          <div id="projekty_SOFA" class="popup_content_area zoom-anim-dialog mfp-hide">
+        <div
+          id="projekty_SOFA"
+          class="popup_content_area zoom-anim-dialog mfp-hide"
+          hidden
+        >
               <div class="popup_modal_content">
                   <div class="portfolio_info">
                       <div class="portfolio_info_text">
@@ -797,7 +812,7 @@ const seo: SeoInput = {
                       </div>
                   </div>
 
-                  <div class="portfolio_gallery owl-carousel">
+                  <div class="portfolio_gallery" data-carousel="portfolio">
                       <div class="gallery_item">
                           <img src="/assets/img/portfolio-gallery/sofa_2.png" alt="" />
                       </div>
@@ -848,7 +863,7 @@ const seo: SeoInput = {
 
                   <div class="portfolio_navigation">
                       <div class="navigation_item prev-project">
-                          <a href="" data-mfp-src="#projekty_O2" class="project modal-popup portfolio-link">
+                          <a href="" data-modal-target="#projekty_O2" class="project modal-popup portfolio-link">
                               <i class="fal fa-arrow-left"></i>
                               <div class="nav_project">
                                   <div class="label">Previous Client</div>
@@ -860,7 +875,7 @@ const seo: SeoInput = {
                   <div class="portfolio_navigation">
                       <div class="navigation_item prev-project"></div>
                       <div class="navigation_item next-project">
-                          <a href="" data-mfp-src="#projekty_GEN" class="project modal-popup portfolio-link">
+                          <a href="" data-modal-target="#projekty_GEN" class="project modal-popup portfolio-link">
                               <div class="nav_project">
                                   <div class="label">Next Client</div>
                                   <h3 class="title">GEN Digital</h3>
@@ -874,7 +889,11 @@ const seo: SeoInput = {
           <!-- end: SOFA -->
 
           <!-- start: GEN -->
-          <div id="projekty_GEN" class="popup_content_area zoom-anim-dialog mfp-hide">
+        <div
+          id="projekty_GEN"
+          class="popup_content_area zoom-anim-dialog mfp-hide"
+          hidden
+        >
               <div class="popup_modal_content">
                   <div class="portfolio_info">
                       <div class="portfolio_info_text">
@@ -909,7 +928,7 @@ const seo: SeoInput = {
                       </div>
                   </div>
 
-                  <div class="portfolio_gallery owl-carousel">
+                  <div class="portfolio_gallery" data-carousel="portfolio">
                       <div class="gallery_item">
                           <img src="/assets/img/portfolio-gallery/avast.png" alt="" />
                       </div>
@@ -958,7 +977,7 @@ const seo: SeoInput = {
                   </div>
                   <div class="portfolio_navigation">
                       <div class="navigation_item prev-project">
-                          <a href="" data-mfp-src="#projekty_SOFA" class="project modal-popup portfolio-link">
+                          <a href="" data-modal-target="#projekty_SOFA" class="project modal-popup portfolio-link">
                               <i class="fal fa-arrow-left"></i>
                               <div class="nav_project">
                                   <div class="label">Previous Client</div>
@@ -1176,7 +1195,7 @@ const seo: SeoInput = {
                   class="testimonials-widget wow fadeInRight"
                   data-wow-delay=".2s"
                 >
-                  <div class="owl-carousel testimonial-carousel">
+                  <div class="testimonial-carousel" data-carousel="testimonials">
                     <div class="testimonial-item">
                       <div
                         class="top-area d-flex flex-wrap justify-content-between"
@@ -1805,169 +1824,59 @@ const seo: SeoInput = {
           </section>
       </main>
   <Fragment slot="after-content">
+    <script type="module" is:inline>
+      const loadInteractions = async () => {
+        const [
+          { default: initShowMore },
+          { default: initModals },
+          { initPortfolioCarousels },
+          { initTestimonialCarousels },
+        ] = await Promise.all([
+          import('../../scripts/show-more.ts'),
+          import('../../scripts/modals.ts'),
+          import('../../scripts/portfolio-carousel.ts'),
+          import('../../scripts/testimonial-carousel.ts'),
+        ]);
 
+        initShowMore();
+        initModals();
+        initPortfolioCarousels();
+        initTestimonialCarousels();
+      };
 
-      <!-- jQuery -->
-      <script src="/assets/js/jquery.min.js" is:inline></script>
+      const scheduleInteractions = () => {
+        loadInteractions().catch((error) =>
+          console.error('Failed to initialize page interactions', error),
+        );
+      };
 
-      <!-- jQuery pluginy -->
-      <script src="/assets/js/jquery.nice-select.min.js" is:inline></script>
-      <script src="/assets/js/metisMenu.min.js" is:inline></script>
-      <script src="/assets/js/owl.carousel.min.js" is:inline></script>
-      <script src="/assets/js/isotope.pkgd.min.js" is:inline></script>
-      <script src="/assets/js/odometer.min.js" is:inline></script>
-      <script src="/assets/js/jquery.magnific-popup.min.js" is:inline></script>
-      <script src="/assets/js/jquery.counterup.min.js" is:inline></script>
-      <script src="/assets/js/jquery.waypoints.min.js" is:inline></script>
-      <script src="/assets/js/jquery.easypiechart.min.js" is:inline></script>
-      <script src="/assets/js/jquery-ui.js" is:inline></script>
-      <script src="/assets/js/jquery.scrollUp.min.js" is:inline></script>
-      <script src="/assets/js/tilt.jquery.min.js" is:inline></script>
-      <script src="/assets/js/jquery.supermarquee.min.js" is:inline></script>
-      <script src="/assets/js/backToTop.js" is:inline></script>
-      <script src="/assets/js/slick.min.js" is:inline></script>
-      <script src="/assets/js/appear.min.js" is:inline></script>
-      <script src="/assets/js/wow.min.js" is:inline></script>
-      <script src="/assets/js/gsap.min.js" is:inline></script>
-      <script src="/assets/js/one-page-nav.js" is:inline></script>
-      <script src="/assets/js/lightcase.js" is:inline></script>
-      <script src="/assets/js/imagesloaded.pkgd.min.js" is:inline></script>
-      <!-- AOS knihovna pro animace on scroll -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-      <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(scheduleInteractions);
+      } else {
+        window.addEventListener('load', scheduleInteractions, { once: true });
+      }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
+    <script>
+      if (window.grecaptcha) {
+        window.grecaptcha.ready(function () {
+          const form = document.getElementById('contact-form');
+          if (!form) return;
 
-      <!-- Bootstrap a další knihovny -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
-      <script src="/assets/js/bootstrap.bundle.min.js" is:inline></script>
-      <script src="/assets/js/vendor/modernizr-3.5.0.min.js" is:inline></script>
-
-      <!-- Ostatní pluginy -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" crossorigin="anonymous"></script>
-      <script src="/assets/js/plugins.js" is:inline></script>
-      <script src="/assets/js/footer-animations.js" is:inline></script>
-
-      <!-- Inicializace AOS -->
-      <script>
-          if (window.AOS) {
-              AOS.init();
-          }
-      </script>
-
-      <!-- Vlastní skripty až nakonec -->
-      <script src="/assets/js/main.js" is:inline></script>
-      <script src="/sluzby/js/main.js" is:inline></script>
-
-      <!-- reCAPTCHA v3 -->
-      <script src="https://www.google.com/recaptcha/api.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
-      <script>
-          grecaptcha.ready(function() {
-              document
-                  .getElementById("contact-form")
-                  .addEventListener("submit", function(event) {
-                      event.preventDefault();
-                      grecaptcha
-                          .execute("6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI", {
-                              action: "submit",
-                          })
-                          .then(function(token) {
-                              document.getElementById("recaptchaResponse").value = token;
-                              event.target.submit();
-                          });
-                  });
-          });
-      </script>
-
-      <!-- ScrollUp button -->
-      <script src="/assets/js/jquery.scrollUp.min.js" is:inline></script>
-      <script>
-          $(function() {
-              var iconHtml = '<i class="bi bi-arrow-up"></i>';
-              if (
-                  typeof window.bootstrap === "undefined" &&
-                  typeof window.Bootstrap === "undefined"
-              ) {
-                  iconHtml = "&#8593;";
-              }
-              $.scrollUp({
-                  scrollName: "scrollUp",
-                  topDistance: "300",
-                  topSpeed: 300,
-                  animation: "fade",
-                  animationSpeed: 200,
-                  scrollText: iconHtml,
-                  activeOverlay: false,
+          form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            window.grecaptcha
+              .execute('6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI', { action: 'submit' })
+              .then(function (token) {
+                const responseField = document.getElementById('recaptchaResponse');
+                if (responseField) {
+                  responseField.value = token;
+                }
+                form.submit();
               });
           });
-      </script>
-      <style>
-          #scrollUp {
-              background: #913bff;
-              width: 50px;
-              height: 50px;
-              position: fixed;
-              right: 50px;
-              bottom: 50px;
-              border-radius: 50%;
-              line-height: 50px;
-              text-align: center;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: #fff;
-              z-index: 9999;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-              transition: background 0.2s;
-              text-decoration: none !important;
-          }
-
-          #scrollUp i {
-              font-size: 1.2rem;
-              font-weight: 400;
-              color: #fff;
-              text-decoration: none !important;
-              filter: brightness(1.2) opacity(0.85);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 100%;
-              width: 100%;
-              margin: 0;
-              padding: 0;
-          }
-
-          #scrollUp:focus,
-          #scrollUp:active {
-              outline: none;
-              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-          }
-
-          #scrollUp:hover {
-              background: #8750f7;
-          }
-
-          #scrollUp,
-          #scrollUp * {
-              text-decoration: none !important;
-              outline: none !important;
-          }
-
-           ::-webkit-scrollbar {
-              height: 4px;
-              width: 4px;
-              background: #2a1454;
-          }
-
-           ::-webkit-scrollbar-thumb {
-              background: #8750f7;
-              -webkit-border-radius: 1ex;
-              -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
-          }
-
-           ::-webkit-scrollbar-corner {
-              background: transparent;
-          }
-      </style>
-
+        });
+      }
+    </script>
   </Fragment>
 </Base>
