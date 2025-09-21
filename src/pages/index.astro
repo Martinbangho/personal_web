@@ -1,5 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import {
+  heroPortrait,
+  portfolioGalleryImages,
+  testimonialPortraits,
+  iconImages,
+} from '../data/media';
 import type { SeoInput } from '../utils/seo';
 import '../styles/landing/hero.css';
 import '../styles/landing/services.css';
@@ -381,7 +388,11 @@ const seo: SeoInput = {
                     class="hero-image-box d-md-none wow fadeInRight"
                     data-wow-delay="0.3s"
                   >
-                    <img src="/assets/img/hero/me.webp" alt="" />
+                    <ResponsiveImage
+                      {...heroPortrait}
+                      alt="Martin Bangho"
+                      loading="eager"
+                    />
                   </div>
                   <p class="lead wow fadeInLeft" data-wow-delay="0.3s">
                     Navrhuji datově podložené SEO strategie, které přinášejí
@@ -425,15 +436,11 @@ const seo: SeoInput = {
                   data-wow-delay="0.2"
                   style="position: relative; width: 100%"
                 >
-                  <img
-                    src="/assets/img/hero/me.webp"
-                    alt=""
-                    style="
-                      width: 100%;
-                      max-width: 520px;
-                      height: auto;
-                      display: block;
-                    "
+                  <ResponsiveImage
+                    {...heroPortrait}
+                    alt="Martin Bangho"
+                    loading="eager"
+                    style="width: 100%; max-width: 520px; height: auto; display: block;"
                   />
                 </div>
               </div>
@@ -824,18 +831,14 @@ const seo: SeoInput = {
             </div>
 
             <div class="portfolio_gallery" data-carousel="portfolio">
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/o2_2.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/o2_3.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/o2_4.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/o2_5.png" alt="" />
-              </div>
+              {portfolioGalleryImages.o2.map((image, index) => (
+                <div class="gallery_item">
+                  <ResponsiveImage
+                    {...image}
+                    alt={`Ukázka projektu O2 ${index + 1}`}
+                  />
+                </div>
+              ))}
             </div>
 
             <div class="portfolio_description">
@@ -946,18 +949,14 @@ const seo: SeoInput = {
             </div>
 
             <div class="portfolio_gallery" data-carousel="portfolio">
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/sofa_2.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/sofa_3.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/sofa_4.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/sofa_5.png" alt="" />
-              </div>
+              {portfolioGalleryImages.sofa.map((image, index) => (
+                <div class="gallery_item">
+                  <ResponsiveImage
+                    {...image}
+                    alt={`Ukázka projektu SOFA ${index + 1}`}
+                  />
+                </div>
+              ))}
             </div>
 
             <div class="portfolio_description">
@@ -1085,15 +1084,14 @@ const seo: SeoInput = {
             </div>
 
             <div class="portfolio_gallery" data-carousel="portfolio">
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/avast.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/norton.png" alt="" />
-              </div>
-              <div class="gallery_item">
-                <img src="./assets/img/portfolio-gallery/lifelock.png" alt="" />
-              </div>
+              {portfolioGalleryImages.security.map((image, index) => (
+                <div class="gallery_item">
+                  <ResponsiveImage
+                    {...image}
+                    alt={`Ukázka projektu Gen Digital ${index + 1}`}
+                  />
+                </div>
+              ))}
             </div>
 
             <div class="portfolio_description">
@@ -1355,7 +1353,10 @@ const seo: SeoInput = {
                   <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/n8n.png" alt="" />
+                        <ResponsiveImage
+                          {...iconImages.n8n}
+                          alt="n8n"
+                        />
                       </div>
                       <div class="number">AI Agenti & <br />Automatizace</div>
                     </div>
@@ -1414,9 +1415,9 @@ const seo: SeoInput = {
                           <h6>Jakub Kejval</h6>
                         </div>
                         <div class="image-box">
-                          <img
-                            src="/assets/img/testimonials/user/kejval.jpg"
-                            alt=""
+                          <ResponsiveImage
+                            {...testimonialPortraits.kejval}
+                            alt="Jakub Kejval"
                           />
                         </div>
                       </div>
@@ -1507,9 +1508,9 @@ const seo: SeoInput = {
                           <h6>Martin<br />Žatkovič</h6>
                         </div>
                         <div class="image-box">
-                          <img
-                            src="/assets/img/testimonials/user/zatkovic.webp"
-                            alt=""
+                          <ResponsiveImage
+                            {...testimonialPortraits.zatkovic}
+                            alt="Jakub Žatkovič"
                           />
                         </div>
                       </div>
@@ -1597,9 +1598,9 @@ const seo: SeoInput = {
                           <h6>Lukáš<br />Vlček</h6>
                         </div>
                         <div class="image-box">
-                          <img
-                            src="/assets/img/testimonials/user/vlcek.jpg"
-                            alt=""
+                          <ResponsiveImage
+                            {...testimonialPortraits.vlcek}
+                            alt="David Vlček"
                           />
                         </div>
                       </div>
@@ -1687,9 +1688,9 @@ const seo: SeoInput = {
                           <h6>UHUMDRUM</h6>
                         </div>
                         <div class="image-box">
-                          <img
-                            src="/assets/img/testimonials/user/kapic.jpg"
-                            alt=""
+                          <ResponsiveImage
+                            {...testimonialPortraits.kapic}
+                            alt="Jakub Kapic"
                           />
                         </div>
                       </div>
@@ -1780,9 +1781,9 @@ const seo: SeoInput = {
                           <h6>Digitální Architekti</h6>
                         </div>
                         <div class="image-box">
-                          <img
-                            src="/assets/img/testimonials/user/architekti.jpg"
-                            alt=""
+                          <ResponsiveImage
+                            {...testimonialPortraits.architekti}
+                            alt="Digitální architekti"
                           />
                         </div>
                       </div>
