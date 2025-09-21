@@ -1,0 +1,63 @@
+---
+export interface ResponsiveSource {
+  srcset: string;
+  type?: string;
+  media?: string;
+  sizes?: string;
+}
+
+export interface ResponsiveImageProps {
+  alt: string;
+  src: string;
+  width: number;
+  height: number;
+  sources?: ResponsiveSource[];
+  srcset?: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'auto' | 'sync';
+  pictureClass?: string;
+  class?: string;
+  style?: string;
+  [key: string]: unknown;
+}
+
+const {
+  alt,
+  src,
+  width,
+  height,
+  sources = [],
+  srcset,
+  sizes,
+  loading = 'lazy',
+  decoding = 'async',
+  pictureClass,
+  class: imgClass,
+  style,
+  ...rest
+} = Astro.props as ResponsiveImageProps;
+---
+<picture class={pictureClass}>
+  {sources.map((source) => (
+    <source
+      type={source.type}
+      srcset={source.srcset}
+      media={source.media}
+      sizes={source.sizes ?? sizes}
+    />
+  ))}
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding={decoding}
+    srcset={srcset}
+    sizes={sizes}
+    class={imgClass}
+    style={style}
+    {...rest}
+  />
+</picture>
