@@ -8,6 +8,7 @@ import {
   iconImages,
 } from '../data/media';
 import type { SeoInput } from '../utils/seo';
+import '../styles/landing/motion.css';
 import '../styles/landing/hero.css';
 import '../styles/landing/services.css';
 import '../styles/landing/portfolio.css';
@@ -376,17 +377,17 @@ const seo: SeoInput = {
               <div class="col-md-6">
                 <div class="hero-content-box">
                   <span
-                    class="hero-sub-title wow fadeInLeft"
-                    data-wow-delay="0.1s"
+                    class="hero-sub-title reveal reveal-left"
+                   
                     >Bangho Martin</span
                   >
-                  <h1 class="hero-title wow fadeInLeft" data-wow-delay="0.2s">
+                  <h1 class="hero-title reveal reveal-left">
                     SEO Konzultant <br />
                     & AI Strategist
                   </h1>
                   <div
-                    class="hero-image-box d-md-none wow fadeInRight"
-                    data-wow-delay="0.3s"
+                    class="hero-image-box d-md-none reveal reveal-right"
+                   
                   >
                     <ResponsiveImage
                       {...heroPortrait}
@@ -394,12 +395,12 @@ const seo: SeoInput = {
                       loading="eager"
                     />
                   </div>
-                  <p class="lead wow fadeInLeft" data-wow-delay="0.3s">
+                  <p class="lead reveal reveal-left">
                     Navrhuji datově podložené SEO strategie, které přinášejí
                     výsledky i ve velmi konkurenčním prostředí.
                   </p>
                   <div class="button-box d-flex flex-wrap align-items-center">
-                    <ul class="ul-reset social-icons wow fadeInLeft">
+                    <ul class="ul-reset social-icons reveal reveal-left">
                       <li>
                         <a
                           href="https://www.facebook.com/profile.php?id=100010412142790"
@@ -424,7 +425,7 @@ const seo: SeoInput = {
                     </ul>
                     <a
                       href="https://www.potion.cz"
-                      class="btn tj-btn-secondary wow fadeInLeft"
+                      class="btn tj-btn-secondary reveal reveal-left"
                       >Potion Newsletter</a
                     >
                   </div>
@@ -432,8 +433,8 @@ const seo: SeoInput = {
               </div>
               <div class="col-md-6 d-none d-md-block">
                 <div
-                  class="hero-image-box text-center wow fadeInRight"
-                  data-wow-delay="0.2"
+                  class="hero-image-box text-center reveal reveal-right"
+                 
                   style="position: relative; width: 100%"
                 >
                   <ResponsiveImage
@@ -446,7 +447,7 @@ const seo: SeoInput = {
               </div>
             </div>
             <div class="funfact-area">
-              <div class="row wow fadeInRight" data-wow-delay="0.2" ">
+              <div class="row reveal reveal-right">
               <div class="col-6 col-lg-3">
                 <div
                   class="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center"
@@ -494,10 +495,10 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-md-12">
                 <div class="section-header text-center">
-                  <h2 class="section-title wow fadeInUp" data-wow-delay="0.1s ">
+                  <h2 class="section-title reveal reveal-up">
                     Služby pro váš projekt
                   </h2>
-                  <p class="wow fadeInUp" data-wow-delay="0.2s ">
+                  <p class="reveal reveal-up">
                     Propojuji své zkušenosti s vaším byznysem a cíli. Tento
                     přístup nám umožní vytvořit strategii, která zajistí
                     udržitelný růst a jasně měřitelné výsledky.
@@ -509,8 +510,8 @@ const seo: SeoInput = {
               <div class="col-md-12">
                 <div class="services-widget position-relative">
                   <div
-                    class="service-item d-flex flex-wrap align-items-center wow fadeInUp"
-                    data-wow-delay="0.1s "
+                    class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                   
                   >
                     <div class="left-box d-flex flex-wrap align-items-center">
                       <span class="number">01</span>
@@ -530,8 +531,8 @@ const seo: SeoInput = {
                     ></button>
                   </div>
                   <div
-                    class="service-item d-flex flex-wrap align-items-center wow fadeInUp"
-                    data-wow-delay="0.1s "
+                    class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                   
                   >
                     <div class="left-box d-flex flex-wrap align-items-center">
                       <span class="number">02</span>
@@ -551,8 +552,8 @@ const seo: SeoInput = {
                     ></button>
                   </div>
                   <div
-                    class="service-item d-flex flex-wrap align-items-center wow fadeInUp"
-                    data-wow-delay="0.1s "
+                    class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                   
                   >
                     <div class="left-box d-flex flex-wrap align-items-center">
                       <span class="number">03</span>
@@ -572,8 +573,8 @@ const seo: SeoInput = {
                     ></button>
                   </div>
                   <div
-                    class="service-item d-flex flex-wrap align-items-center wow fadeInUp"
-                    data-wow-delay="0.1s "
+                    class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                   
                   >
                     <div class="left-box d-flex flex-wrap align-items-center">
                       <span class="number">04</span>
@@ -597,8 +598,8 @@ const seo: SeoInput = {
 
                   <div class="hidden-services" hidden>
                     <div
-                      class="service-item d-flex flex-wrap align-items-center fadeInUp"
-                      data-wow-delay="0.1s "
+                      class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                     
                     >
                       <div class="left-box d-flex flex-wrap align-items-center">
                         <span class="number">05</span>
@@ -619,7 +620,7 @@ const seo: SeoInput = {
                       ></button>
                     </div>
                     <div
-                      class="service-item d-flex flex-wrap align-items-center fadeInUp"
+                      class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
                     >
                       <div class="left-box d-flex flex-wrap align-items-center">
                         <span class="number">06</span>
@@ -639,8 +640,8 @@ const seo: SeoInput = {
                       ></button>
                     </div>
                     <div
-                      class="service-item d-flex flex-wrap align-items-center fadeInUp"
-                      data-wow-delay="0.1s "
+                      class="service-item d-flex flex-wrap align-items-center reveal reveal-up"
+                     
                     >
                       <div class="left-box d-flex flex-wrap align-items-center">
                         <span class="number">07</span>
@@ -661,14 +662,14 @@ const seo: SeoInput = {
                     </div>
 
                     <div
-                      class="active-bg wow fadeInUp"
-                      data-wow-delay=".2s "
+                      class="active-bg reveal reveal-up"
+                     
                     ></div>
                   </div>
                   <!-- Button -->
                   <div
-                    class="text-center mt-6 pt-3 flex-wrap align-items-center wow fadeInUp"
-                    data-wow-delay="0.1s "
+                    class="text-center mt-6 pt-3 flex-wrap align-items-center reveal reveal-up"
+                   
                   >
                     <button id="show-more-btn" class="btn tj-btn-primary">
                       Zobrazit více
@@ -687,10 +688,10 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-md-12">
                 <div class="section-header text-center">
-                  <h2 class="section-title wow fadeInUp" data-wow-delay="0.3s">
+                  <h2 class="section-title reveal reveal-up">
                     Vybrané reference
                   </h2>
-                  <p class="wow fadeInUp" data-wow-delay="0.2s ">
+                  <p class="reveal reveal-up">
                     Zkušenosti s podporou lídrů trhu i rychle rostoucích firem v
                     SEO a marketingu.
                   </p>
@@ -700,8 +701,8 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-md-12">
                 <div
-                  class="portfolio-box wow fadeInUp d-flex flex-wrap skills-widget"
-                  data-wow-delay="0.15s"
+                  class="portfolio-box reveal reveal-up d-flex flex-wrap skills-widget"
+                 
                 >
                   <div class="portfolio-sizer"></div>
                   <div class="gutter-sizer"></div>
@@ -744,7 +745,7 @@ const seo: SeoInput = {
                 <div
                   class="skills-widget d-flex flex-wrap justify-content-center align-items-center"
                 >
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/portfolio/angry.svg" alt="" />
@@ -752,7 +753,7 @@ const seo: SeoInput = {
                       <div class="number">Angry Beards</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/portfolio/srovname.svg" alt="" />
@@ -760,7 +761,7 @@ const seo: SeoInput = {
                       <div class="number">Srovnáme</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/portfolio/avast.svg" alt="" />
@@ -768,7 +769,7 @@ const seo: SeoInput = {
                       <div class="number">Avast</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/portfolio/norton.svg" alt="" />
@@ -776,7 +777,7 @@ const seo: SeoInput = {
                       <div class="number">Norton</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/portfolio/cockyna.svg" alt="" />
@@ -1167,26 +1168,26 @@ const seo: SeoInput = {
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                <div class="section-header wow fadeInUp" data-wow-delay=".2s">
+                <div class="section-header reveal reveal-up">
                   <h2 class="section-title">Moje profesní cesta</h2>
                 </div>
                 <div class="resume-widget">
-                  <div class="resume-item wow fadeInLeft" data-wow-delay=".2s">
+                  <div class="resume-item reveal reveal-left">
                     <div class="time">2025</div>
                     <h3 class="resume-title">Projektové řízení</h3>
                     <div class="institute">Západočeská univerzita v Plzni</div>
                   </div>
-                  <div class="resume-item wow fadeInLeft" data-wow-delay=".2s">
+                  <div class="resume-item reveal reveal-left">
                     <div class="time">2021 - 2023</div>
                     <h3 class="resume-title">SEO Specialista</h3>
                     <div class="institute">ANT studio s.r.o. – Plzeň</div>
                   </div>
-                  <div class="resume-item wow fadeInLeft" data-wow-delay=".2s">
+                  <div class="resume-item reveal reveal-left">
                     <div class="time">2020 - 2021</div>
                     <h3 class="resume-title">SEO Specialista</h3>
                     <div class="institute">Digital Depo s.r.o. – Plzeň</div>
                   </div>
-                  <div class="resume-item wow fadeInLeft" data-wow-delay=".2s">
+                  <div class="resume-item reveal reveal-left">
                     <div class="time">2019 - 2020</div>
                     <h3 class="resume-title">Marketing a analytika</h3>
                     <div class="institute">
@@ -1197,7 +1198,7 @@ const seo: SeoInput = {
               </div>
 
               <div class="col-md-6">
-                <div class="section-header wow fadeInUp" data-wow-delay="0.2s">
+                <div class="section-header reveal reveal-up">
                   <h2 class="section-title">Kde jsem přednášel</h2>
                 </div>
                 <div class="resume-widget">
@@ -1205,8 +1206,8 @@ const seo: SeoInput = {
                     href="https://www.seo-pivo.cz/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="resume-item wow fadeInRight"
-                    data-wow-delay="0.2s"
+                    class="resume-item reveal reveal-right"
+                   
                   >
                     <div class="time">2025</div>
                     <h3 class="resume-title">SEO Pivo</h3>
@@ -1218,8 +1219,8 @@ const seo: SeoInput = {
                     href="https://barcamp20.cz/2025/prednaska/194"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="resume-item wow fadeInRight"
-                    data-wow-delay="0.2s"
+                    class="resume-item reveal reveal-right"
+                   
                   >
                     <div class="time">2025</div>
                     <h3 class="resume-title">BarCamp 2.0</h3>
@@ -1231,8 +1232,8 @@ const seo: SeoInput = {
                     href="https://www.marketingova-plzen.cz/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="resume-item wow fadeInRight"
-                    data-wow-delay="0.2s"
+                    class="resume-item reveal reveal-right"
+                   
                   >
                     <div class="time">2025</div>
                     <h3 class="resume-title">Marketingová Plzeň</h3>
@@ -1244,8 +1245,8 @@ const seo: SeoInput = {
                     href="https://seobootcamp.cz/p/prednasky-ze-seobootcampu-2024/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="resume-item wow fadeInRight"
-                    data-wow-delay="0.2s"
+                    class="resume-item reveal reveal-right"
+                   
                   >
                     <div class="time">2024</div>
                     <h3 class="resume-title">SEO Bootcamp</h3>
@@ -1256,8 +1257,8 @@ const seo: SeoInput = {
                   <div class="d-flex justify-content-left">
                     <a
                       href="https://blog.bangho.cz/ostatni/konference/"
-                      class="btn tj-btn-secondary wow fadeInRight"
-                      data-wow-delay="0.2s"
+                      class="btn tj-btn-secondary reveal reveal-right"
+                     
                       >Kde dále jsem přednášel</a
                     >
                   </div>
@@ -1274,7 +1275,7 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-md-12">
                 <div class="section-header text-center">
-                  <h2 class="section-title wow fadeInUp" data-wow-delay=".2s">
+                  <h2 class="section-title reveal reveal-up">
                     Nástroje se kterými pracuji
                   </h2>
                 </div>
@@ -1285,7 +1286,7 @@ const seo: SeoInput = {
                 <div
                   class="skills-widget d-flex flex-wrap justify-content-center align-items-center"
                 >
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/scf.svg" alt="" />
@@ -1293,7 +1294,7 @@ const seo: SeoInput = {
                       <div class="number">Screaming Frog</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/Ahrefs.svg" alt="" />
@@ -1302,7 +1303,7 @@ const seo: SeoInput = {
                     </div>
                   </div>
 
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/gsc.svg" alt="" />
@@ -1310,7 +1311,7 @@ const seo: SeoInput = {
                       <div class="number">Search Console</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/ga.svg" alt="" />
@@ -1318,7 +1319,7 @@ const seo: SeoInput = {
                       <div class="number">Google Analytics</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/looker.svg" alt="" />
@@ -1326,7 +1327,7 @@ const seo: SeoInput = {
                       <div class="number">Datová Analytika</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/wp.svg" alt="" />
@@ -1334,7 +1335,7 @@ const seo: SeoInput = {
                       <div class="number">CMS<br />Systémy</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/html.svg" alt="" />
@@ -1342,7 +1343,7 @@ const seo: SeoInput = {
                       <div class="number">Web &<br />Vývoj</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/chatgpt.svg" alt="" />
@@ -1350,7 +1351,7 @@ const seo: SeoInput = {
                       <div class="number">AI nástroje<br />& LLMs</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <ResponsiveImage
@@ -1361,7 +1362,7 @@ const seo: SeoInput = {
                       <div class="number">AI Agenti & <br />Automatizace</div>
                     </div>
                   </div>
-                  <div class="skill-item wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
                         <img src="/assets/img/icons/jira.svg" alt="" />
@@ -1382,10 +1383,10 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-lg-5">
                 <div class="section-header">
-                  <h2 class="section-title wow fadeInLeft" data-wow-delay="0.2s">
+                  <h2 class="section-title reveal reveal-left">
                     Kompletní marketingové zázemí
                   </h2>
-                  <p class="wow fadeInLeft" data-wow-delay=".2s">
+                  <p class="reveal reveal-left">
                     Na projektech spolupracuji s osvědčenými odborníky z různých
                     oblastí online marketingu. Doporučuji jen ty, o jejichž
                     profesionalitě, znalostech a výsledcích jsem přesvědčen. Díky
@@ -1395,16 +1396,16 @@ const seo: SeoInput = {
                 </div>
                 <a
                   href="/sluzby/marketingova-strategie"
-                  class="btn tj-btn-secondary wow fadeInLeft"
-                  data-wow-delay="0.2s"
+                  class="btn tj-btn-secondary reveal reveal-left"
+                 
                   >Chci kompletní marketing</a
                 >
               </div>
 
               <div class="col-lg-7 col-xl-6 offset-xl-1">
                 <div
-                  class="testimonials-widget wow fadeInRight"
-                  data-wow-delay=".2s"
+                  class="testimonials-widget reveal reveal-right"
+                 
                 >
                   <div class="testimonial-carousel" data-carousel="testimonials">
                     <div class="testimonial-item">
@@ -1880,8 +1881,8 @@ const seo: SeoInput = {
             <div class="row">
               <div class="col-lg-6 col-md-6 order-1 order-md-1">
                 <div
-                  class="contact-form-box wow fadeInLeft"
-                  data-wow-delay="0.2s"
+                  class="contact-form-box reveal reveal-left"
+                 
                 >
                   <div class="section-header">
                     <h2 class="section-title">Kontaktujte mě</h2>
@@ -1977,8 +1978,8 @@ const seo: SeoInput = {
                 <div class="contact-info-list">
                   <ul class="">
                     <li
-                      class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
-                      data-wow-delay="0.2s"
+                      class="d-flex flex-wrap align-items-center position-relative reveal reveal-right"
+                     
                     >
                       <div class="icon-box">
                         <i class="flaticon-phone-call"></i>
@@ -1989,8 +1990,8 @@ const seo: SeoInput = {
                       </div>
                     </li>
                     <li
-                      class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
-                      data-wow-delay="0.2s"
+                      class="d-flex flex-wrap align-items-center position-relative reveal reveal-right"
+                     
                     >
                       <div class="icon-box">
                         <i class="flaticon-mail-inbox-app"></i>
@@ -2001,8 +2002,8 @@ const seo: SeoInput = {
                       </div>
                     </li>
                     <li
-                      class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
-                      data-wow-delay="0.2s"
+                      class="d-flex flex-wrap align-items-center position-relative reveal reveal-right"
+                     
                     >
                       <div class="icon-box">
                         <i class="flaticon-location"></i>
@@ -2015,8 +2016,8 @@ const seo: SeoInput = {
                       </div>
                     </li>
                     <li
-                      class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
-                      data-wow-delay="0.2s"
+                      class="d-flex flex-wrap align-items-center position-relative reveal reveal-right"
+                     
                     >
                       <div class="icon-box">
                         <i class="flaticon-resume"></i>

@@ -31,12 +31,14 @@ const {
   srcset,
   sizes,
   loading = 'lazy',
-  decoding = 'async',
+  decoding: decodingProp,
   pictureClass,
   class: imgClass,
   style,
   ...rest
 } = Astro.props as ResponsiveImageProps;
+
+const decoding = decodingProp ?? (loading === 'eager' ? 'sync' : 'async');
 ---
 <picture class={pictureClass}>
   {sources.map((source) => (

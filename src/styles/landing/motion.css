@@ -1,0 +1,65 @@
+.reveal {
+  --reveal-duration: 420ms;
+  --reveal-distance: 1.5rem;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-duration: var(--reveal-duration);
+  animation-fill-mode: both;
+  animation-timing-function: var(--reveal-ease);
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.reveal-up {
+  animation-name: reveal-up;
+}
+
+.reveal.reveal-left {
+  animation-name: reveal-left;
+}
+
+.reveal.reveal-right {
+  animation-name: reveal-right;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translate3d(calc(var(--reveal-distance) * -1), 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--reveal-distance), 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
