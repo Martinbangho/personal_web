@@ -22,6 +22,7 @@ const {
 }: Props = Astro.props;
 
 const seoTags = seo ? buildSeoTags(lang, seo) : null;
+const shouldRegisterSw = import.meta.env.PROD;
 ---
 
 <!DOCTYPE html>
@@ -98,5 +99,16 @@ gtag('config', 'G-92X11QBKZL');`}
       </Footer>
     </div>
     <slot name="after-content" />
+    {shouldRegisterSw && (
+      <script>
+        {`if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((error) => {
+      console.error('Service worker registration failed', error);
+    });
+  });
+}`}
+      </script>
+    )}
   </body>
 </html>

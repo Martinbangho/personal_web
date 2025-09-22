@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+
+const seo = {
+  title: 'Offline režim',
+  description: 'Tato stránka je dostupná i bez připojení k internetu.',
+};
+---
+
+<Base seo={seo}>
+  <section class="offline-state pt-120 pb-120">
+    <div class="container text-center">
+      <h1>Jste offline</h1>
+      <p>
+        Obsah se načte hned, jakmile budete mít znovu připojení k internetu. Zatím můžete
+        procházet uložené stránky nebo se vrátit na úvodní stranu.
+      </p>
+      <p>
+        <a class="btn btn-primary" href="/">Zpět na úvod</a>
+      </p>
+    </div>
+  </section>
+</Base>
