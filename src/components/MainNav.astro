@@ -1,6 +1,12 @@
 ---
 import type { Locale } from '../data/navigation';
 import { getNavigation } from '../data/navigation';
+import {
+  isExternalHref,
+  prependForwardSlash,
+  resolveAssetPath,
+  withBase,
+} from '../utils/paths';
 import '../styles/components/navigation.css';
 
 interface Props {
@@ -16,6 +22,36 @@ const {
 }: Props = Astro.props;
 
 const navigation = getNavigation(lang);
+const resolveNavigationHref = (
+  href: string | undefined,
+  external?: boolean,
+) => {
+  if (!href) {
+    return undefined;
+  }
+
+  if (external || isExternalHref(href)) {
+    return href;
+  }
+
+  return withBase(prependForwardSlash(href));
+};
+
+const logoHref = resolveNavigationHref(navigation.logoHref) ?? withBase('');
+const logoSrc = resolveAssetPath('assets/img/logo.ico');
+const menu = navigation.menu.map((item) => ({
+  ...item,
+  href: resolveNavigationHref(item.href, item.external),
+  items: item.items?.map((child) => ({
+    ...child,
+    href: resolveNavigationHref(child.href, child.external),
+  })),
+}));
+const languages = navigation.languages.map((language) => ({
+  ...language,
+  href: resolveNavigationHref(language.href),
+  flag: resolveAssetPath(language.flag),
+}));
 const headerClasses = ['theme-main-menu', 'theme-menu-three', headerClass]
   .filter(Boolean)
   .join(' ');
@@ -23,7 +59,7 @@ const topHeaderClasses = ['top-header', topHeaderClass].filter(Boolean).join(' '
 const hasDesktopCta = Astro.slots.has('desktop-cta');
 const hasMobileCta = Astro.slots.has('mobile-cta');
 const activeLanguage =
-  navigation.languages.find((language) => language.code === lang) ?? navigation.languages[0];
+  languages.find((language) => language.code === lang) ?? languages[0];
 
 const externalAttrs = {
   target: '_blank',
@@ -37,9 +73,9 @@ const externalAttrs = {
         <div class="col-12 d-flex flex-wrap align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <div>
-              <a href={navigation.logoHref}>
+              <a href={logoHref}>
                 <img
-                  src="/assets/img/logo.ico"
+                  src={logoSrc}
                   alt="Logo Martin Bangho"
                   width="60"
                   height="60"
@@ -97,7 +133,7 @@ const externalAttrs = {
           <nav class="navbar navbar-expand-lg">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav list-none ps-0 mb-2 mb-lg-0">
-                {navigation.menu.map((item, index) => {
+                {menu.map((item, index) => {
                   const hasChildren = Array.isArray(item.items) && item.items.length > 0;
                   const dropdownId = `nav-dropdown-${index}`;
                   const linkAttrs = item.external ? externalAttrs : {};
@@ -160,7 +196,7 @@ const externalAttrs = {
                 {activeLanguage.shortLabel}
               </button>
               <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                {navigation.languages.map((language) => (
+                {languages.map((language) => (
                   <li>
                     <a class="dropdown-item" href={language.href} hreflang={language.hreflang}>
                       <img
@@ -192,14 +228,14 @@ const externalAttrs = {
     <a href="javascript:void(0);" aria-label="Zavřít menu"><i class="fas fa-times"></i></a>
   </div>
   <div class="mobile-header px-1 py-2 d-flex align-items-center">
-    <a href={navigation.logoHref} class="d-flex align-items-center text-white text-decoration-none">
-      <img src="/assets/img/logo.ico" alt="Logo" width="46" height="46" class="me-2" />
+    <a href={logoHref} class="d-flex align-items-center text-white text-decoration-none">
+      <img src={logoSrc} alt="Logo" width="46" height="46" class="me-2" />
     </a>
     <span class="mobile-email">{navigation.email}</span>
   </div>
   <nav class="side-mobile-menu" aria-label="Mobilní menu">
     <ul id="mobile-menu-active">
-      {navigation.menu.map((item) => {
+      {menu.map((item) => {
         const hasChildren = Array.isArray(item.items) && item.items.length > 0;
         const linkAttrs = item.external ? externalAttrs : {};
 
@@ -247,7 +283,7 @@ const externalAttrs = {
         {activeLanguage.shortLabel}
       </button>
       <ul class="dropdown-menu mt-2" aria-labelledby="mobileLangDropdown">
-        {navigation.languages.map((language) => (
+        {languages.map((language) => (
           <li>
             <a class="dropdown-item py-2" href={language.href} hreflang={language.hreflang}>
               <img

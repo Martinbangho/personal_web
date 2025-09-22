@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import type { Locale } from '../data/navigation';
 import type { SeoInput } from '../utils/seo';
 import { buildSeoTags } from '../utils/seo';
+import { resolveAssetPath, withBase } from '../utils/paths';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
@@ -23,6 +24,19 @@ const {
 
 const seoTags = seo ? buildSeoTags(lang, seo) : null;
 const shouldRegisterSw = import.meta.env.PROD;
+const serviceWorkerPath = withBase('sw.js');
+const backgrounds = {
+  selectArrow: resolveAssetPath('assets/img/icons/down-arrow.svg'),
+  heroBanner: resolveAssetPath('assets/img/hero/hero-bg-shap-3a.svg'),
+  featureShape: resolveAssetPath('sluzby/img/shape/topograph-1c.svg'),
+  authorQuote: resolveAssetPath('assets/img/icon/icon-45.svg'),
+  projectInfo: resolveAssetPath('assets/img/work/big-img-01.jpg'),
+  videoPrimary: resolveAssetPath('assets/img/video/video-1b.jpg'),
+  videoSecondary: resolveAssetPath('assets/img/video/video-2d.jpg'),
+  priceBackground: resolveAssetPath('img/bg/price-bg-1c.svg'),
+  planShape: resolveAssetPath('sluzby/img/shape/topograph-2c.svg'),
+  errorSpiral: resolveAssetPath('sluzby/img/shape/spiral-1e.svg'),
+};
 ---
 
 <!DOCTYPE html>
@@ -33,11 +47,25 @@ const shouldRegisterSw = import.meta.env.PROD;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="msapplication-TileColor" content="#9f00a7" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={withBase('apple-touch-icon.png')}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={withBase('favicon-32x32.png')}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={withBase('favicon-16x16.png')}
+    />
+    <link rel="manifest" href={withBase('site.webmanifest')} />
+    <link rel="mask-icon" href={withBase('safari-pinned-tab.svg')} color="#5bbad5" />
     <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,12 +77,53 @@ const shouldRegisterSw = import.meta.env.PROD;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
     />
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/assets/css/font-awesome-pro.min.css" />
-    <link rel="stylesheet" href="/assets/css/flaticon_gerold.css" />
-    <link rel="stylesheet" href="/assets/css/all.min.css" />
-    <link rel="stylesheet" href="/assets/fonts/bootstrap-icons/font-css.css" />
-    <link rel="stylesheet" href="/assets/fonts/custom-font/css/clash-display.css" />
+    <link rel="stylesheet" href={resolveAssetPath('assets/css/bootstrap.min.css')} />
+    <link rel="stylesheet" href={resolveAssetPath('assets/css/font-awesome-pro.min.css')} />
+    <link rel="stylesheet" href={resolveAssetPath('assets/css/flaticon_gerold.css')} />
+    <link rel="stylesheet" href={resolveAssetPath('assets/css/all.min.css')} />
+    <link rel="stylesheet" href={resolveAssetPath('assets/fonts/bootstrap-icons/font-css.css')} />
+    <link rel="stylesheet" href={resolveAssetPath('assets/fonts/custom-font/css/clash-display.css')} />
+    <style is:inline>
+      .tj-nice-select::after {
+        background-image: url({backgrounds.selectArrow});
+      }
+
+      .theme-banner-three::before {
+        background-image: url({backgrounds.heroBanner});
+      }
+
+      .feature-style-five::before {
+        background-image: url({backgrounds.featureShape});
+      }
+
+      .author-blockquote::before {
+        background-image: url({backgrounds.authorQuote});
+      }
+
+      .project-info {
+        background-image: url({backgrounds.projectInfo});
+      }
+
+      .video-wrapper {
+        background-image: url({backgrounds.videoPrimary});
+      }
+
+      .techy-video {
+        background-image: url({backgrounds.videoSecondary});
+      }
+
+      .bg-wrapper-one {
+        background-image: url({backgrounds.priceBackground});
+      }
+
+      .plan::before {
+        background-image: url({backgrounds.planShape});
+      }
+
+      .error-page-bg {
+        background-image: url({backgrounds.errorSpiral});
+      }
+    </style>
     {seoTags && (
       <>
         <title>{seoTags.title}</title>
@@ -133,7 +202,7 @@ gtag('config', 'G-92X11QBKZL');`}
       <script>
         {`if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch((error) => {
+    navigator.serviceWorker.register('${serviceWorkerPath}').catch((error) => {
       console.error('Service worker registration failed', error);
     });
   });

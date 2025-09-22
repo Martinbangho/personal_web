@@ -561,7 +561,7 @@
 .theme-banner-three::before {
   content: "";
   position: absolute;
-  background: url(/assets/img/hero/hero-bg-shap-3a.svg) no-repeat;
+  background: none;
   background-size: cover;
   width: 100%;
   height: 1095px;
@@ -1650,7 +1650,7 @@
 .feature-style-five::before {
   content: "";
   position: absolute;
-  background: url(/assets/img/shape/topograph-1c.svg) no-repeat;
+  background: none;
   width: 100%;
   height: 0px;
   left: 0;
@@ -2537,7 +2537,7 @@ ul.slick-dots li.slick-active {
 }
 .author-blockquote::before {
   content: " ";
-  background: url(/assets/img/icon/icon-45.svg) no-repeat;
+  background: none;
   width: 53px;
   height: 40px;
   opacity: 0.3;
@@ -3269,7 +3269,7 @@ ul.slick-dots li.slick-active {
 }
 
 .project-info {
-  background: url(/assets/img/work/big-img-01.jpg) no-repeat;
+  background: none;
   background-size: cover;
   background-position: center;
 }
@@ -3308,7 +3308,7 @@ ul.slick-dots li.slick-active {
 }
 
 .video-wrapper {
-  background: url(/assets/img/video/video-1b.jpg) no-repeat;
+  background: none;
   width: 100%;
   min-height: 650px;
   background-position: center;
@@ -3335,7 +3335,7 @@ ul.slick-dots li.slick-active {
 }
 
 .techy-video {
-  background: url(/assets/img/video/video-2d.jpg) no-repeat;
+  background: none;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -4081,7 +4081,7 @@ ul.slick-dots li.slick-active {
 .bg-wrapper-one {
   position: relative;
   z-index: 1;
-  background: url(/img/bg/price-bg-1c.svg) no-repeat;
+  background: none;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -4138,7 +4138,7 @@ ul.slick-dots li.slick-active {
 }
 .plan::before {
   content: "";
-  background: url("/assets/img/img/shape/topograph-2c.svg") no-repeat;
+  background: none;
   position: absolute;
   left: 11px;
   right: 0;
@@ -5580,7 +5580,7 @@ ul.slick-dots li.slick-active {
 }
 
 .error-page-bg {
-  background: url(/assets/img/shape/spiral-1e.svg) no-repeat;
+  background: none;
   background-size: cover;
   background-position: center;
   position: relative;

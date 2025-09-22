@@ -7,6 +7,7 @@ import {
   testimonialPortraits,
   iconImages,
 } from '../data/media';
+import { resolveAssetPath, withBase } from '../utils/paths';
 import type { SeoInput } from '../utils/seo';
 import '../styles/landing/motion.css';
 import '../styles/landing/hero.css';
@@ -34,6 +35,8 @@ const seo: SeoInput = {
     { href: 'https://bangho.cz/en', hreflang: 'x-default' },
   ],
 };
+
+const asset = resolveAssetPath;
 ---
 
 <Base seo={seo}>
@@ -709,7 +712,7 @@ const seo: SeoInput = {
 
                   <div class="portfolio-item">
                     <div class="image-box">
-                      <img src="/assets/img/portfolio/O2-Logo.svg" alt="" />
+                      <img src={asset('assets/img/portfolio/O2-Logo.svg')} alt="" />
                     </div>
                     <div class="content-box">
                       <h3 class="portfolio-title">O2 Czech Republic</h3>
@@ -723,7 +726,7 @@ const seo: SeoInput = {
                   </div>
                   <div class="portfolio-item">
                     <div class="image-box">
-                      <img src="/assets/img/portfolio/Gen_logo.svg" alt="" />
+                      <img src={asset('assets/img/portfolio/Gen_logo.svg')} alt="" />
                     </div>
                     <div class="content-box">
                       <h3 class="portfolio-title">Gen Digital Inc.</h3>
@@ -748,7 +751,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/portfolio/angry.svg" alt="" />
+                        <img src={asset('assets/img/portfolio/angry.svg')} alt="" />
                       </div>
                       <div class="number">Angry Beards</div>
                     </div>
@@ -756,7 +759,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/portfolio/srovname.svg" alt="" />
+                        <img src={asset('assets/img/portfolio/srovname.svg')} alt="" />
                       </div>
                       <div class="number">Srovnáme</div>
                     </div>
@@ -764,7 +767,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/portfolio/avast.svg" alt="" />
+                        <img src={asset('assets/img/portfolio/avast.svg')} alt="" />
                       </div>
                       <div class="number">Avast</div>
                     </div>
@@ -772,7 +775,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/portfolio/norton.svg" alt="" />
+                        <img src={asset('assets/img/portfolio/norton.svg')} alt="" />
                       </div>
                       <div class="number">Norton</div>
                     </div>
@@ -780,7 +783,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/portfolio/cockyna.svg" alt="" />
+                        <img src={asset('assets/img/portfolio/cockyna.svg')} alt="" />
                       </div>
                       <div class="number">Čočkýna</div>
                     </div>
@@ -1289,7 +1292,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/scf.svg" alt="" />
+                        <img src={asset('assets/img/icons/scf.svg')} alt="" />
                       </div>
                       <div class="number">Screaming Frog</div>
                     </div>
@@ -1297,7 +1300,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/Ahrefs.svg" alt="" />
+                        <img src={asset('assets/img/icons/Ahrefs.svg')} alt="" />
                       </div>
                       <div class="number">Ahrefs</div>
                     </div>
@@ -1306,7 +1309,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/gsc.svg" alt="" />
+                        <img src={asset('assets/img/icons/gsc.svg')} alt="" />
                       </div>
                       <div class="number">Search Console</div>
                     </div>
@@ -1314,7 +1317,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/ga.svg" alt="" />
+                        <img src={asset('assets/img/icons/ga.svg')} alt="" />
                       </div>
                       <div class="number">Google Analytics</div>
                     </div>
@@ -1322,7 +1325,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/looker.svg" alt="" />
+                        <img src={asset('assets/img/icons/looker.svg')} alt="" />
                       </div>
                       <div class="number">Datová Analytika</div>
                     </div>
@@ -1330,7 +1333,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/wp.svg" alt="" />
+                        <img src={asset('assets/img/icons/wp.svg')} alt="" />
                       </div>
                       <div class="number">CMS<br />Systémy</div>
                     </div>
@@ -1338,7 +1341,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/html.svg" alt="" />
+                        <img src={asset('assets/img/icons/html.svg')} alt="" />
                       </div>
                       <div class="number">Web &<br />Vývoj</div>
                     </div>
@@ -1346,7 +1349,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/chatgpt.svg" alt="" />
+                        <img src={asset('assets/img/icons/chatgpt.svg')} alt="" />
                       </div>
                       <div class="number">AI nástroje<br />& LLMs</div>
                     </div>
@@ -1365,7 +1368,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/jira.svg" alt="" />
+                        <img src={asset('assets/img/icons/jira.svg')} alt="" />
                       </div>
                       <div class="number">Projektový Management</div>
                     </div>
@@ -1395,7 +1398,7 @@ const seo: SeoInput = {
                   </p>
                 </div>
                 <a
-                  href="/sluzby/marketingova-strategie"
+                  href={withBase('sluzby/marketingova-strategie')}
                   class="btn tj-btn-secondary reveal reveal-left"
                  
                   >Chci kompletní marketing</a
