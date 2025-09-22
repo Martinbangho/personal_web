@@ -8,6 +8,7 @@ This project no longer relies on legacy jQuery bundles. Interactivity is provide
 - `show-more.ts` – toggles additional service cards. Buttons can override their labels with `data-collapsed-label` and `data-expanded-label` attributes.
 - `portfolio-carousel.ts` & `testimonial-carousel.ts` – lightweight carousel initialisers used on landing pages and portfolio modals.
 - `modals.ts` – enables inline modal windows referenced via `data-modal-target` attributes.
+- `contact-form.ts` – progressively enhances forms marked with `data-contact-form` to submit JSON requests to `/api/contact`, display inline status messages, and queue retries while the user is offline.
 
 Shared slider styling lives in [`src/styles/components/carousel.css`](../src/styles/components/carousel.css) and modal styling in [`src/styles/components/modal.css`](../src/styles/components/modal.css).
 
