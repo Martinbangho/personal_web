@@ -58,10 +58,6 @@ This document introduces the structure of the `personal_web` project so a new co
 3. Visit the printed localhost URL to browse the site. Astro supports hot-module reloading for components, styles and Markdown content.
 4. Build a production bundle with `npm run build`; preview the result via `npm run preview`.
 
-## Deployment
-- Continuous delivery is handled by `.github/workflows/deploy.yml`. The workflow builds the site on every push to `main` (or on manual runs) and publishes the output to the `gh-pages` branch via GitHub Pages.
-- No additional configuration is required for local preview builds. When the workflow runs inside GitHub Actions it automatically sets the correct base path for project pages, so assets resolve from `/<repository-name>/`.
-- To deploy to a different domain, override the `SITE` environment variable during the build so generated canonical URLs reflect the production hostname.
 
 ## Suggested next steps for new contributors
 - Read `docs/interactions.md` to understand the philosophy behind the JavaScript modules and how hydration is controlled.
