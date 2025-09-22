@@ -58,6 +58,7 @@ This document introduces the structure of the `personal_web` project so a new co
 3. Visit the printed localhost URL to browse the site. Astro supports hot-module reloading for components, styles and Markdown content.
 4. Build a production bundle with `npm run build`; preview the result via `npm run preview`.
 
+
 ## Suggested next steps for new contributors
 - Read `docs/interactions.md` to understand the philosophy behind the JavaScript modules and how hydration is controlled.
 - Study `docs/contact-api.md` before touching the serverless form handler or environment secrets.
