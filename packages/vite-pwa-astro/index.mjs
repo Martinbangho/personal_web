@@ -42,7 +42,42 @@ function shouldInclude(relPath, includeRegex, excludeMatchers) {
   });
 }
 
-async function createPrecacheManifest(outDir, includeRegex, excludeMatchers) {
+function sanitizeBase(base) {
+  if (!base || base === '/' || base === './') {
+    return '/';
+  }
+
+  let normalized = base;
+  if (!normalized.startsWith('/')) {
+    normalized = `/${normalized}`;
+  }
+
+  if (normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  return normalized;
+}
+
+function resolveWithBase(base, pathname) {
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  if (!base || base === '/' || base === './') {
+    return normalizedPath;
+  }
+
+  let normalizedBase = base;
+  if (!normalizedBase.startsWith('/')) {
+    normalizedBase = `/${normalizedBase}`;
+  }
+
+  if (normalizedBase.endsWith('/')) {
+    normalizedBase = normalizedBase.slice(0, -1);
+  }
+
+  return `${normalizedBase}${normalizedPath}`;
+}
+
+async function createPrecacheManifest(outDir, includeRegex, excludeMatchers, base) {
   const files = await walkDir(outDir);
   const manifest = [];
 
@@ -56,7 +91,7 @@ async function createPrecacheManifest(outDir, includeRegex, excludeMatchers) {
     const data = await fs.readFile(filePath);
     const revision = createHash('sha256').update(data).digest('hex').slice(0, 16);
     manifest.push({
-      url: `/${relPath}`,
+      url: resolveWithBase(base, `/${relPath}`),
       revision,
     });
   }
@@ -73,20 +108,25 @@ export default function VitePWA(userOptions = {}) {
     manifestFilename = `pwa-manifest-${buildHash}.json`,
     manifestPlaceholder = '__PRECACHE_MANIFEST__',
     cacheVersionPlaceholder = '__CACHE_VERSION__',
+    basePlaceholder = '__ASTRO_BASE__',
   } = userOptions;
 
   const includeRegex = include instanceof RegExp ? include : DEFAULT_INCLUDE;
   const excludeMatchers = Array.isArray(exclude) ? exclude : [exclude];
+  let resolvedBase = '/';
 
   return {
     name: '@vite-pwa/astro-manifest',
     hooks: {
+      'astro:config:done': ({ config }) => {
+        resolvedBase = sanitizeBase(config.base);
+      },
       'astro:build:done': async ({ dir }) => {
         const outDir = fileURLToPath(dir);
         const manifest = await createPrecacheManifest(outDir, includeRegex, [
           ...DEFAULT_EXCLUDES,
           ...excludeMatchers,
-        ]);
+        ], resolvedBase);
         const manifestJson = JSON.stringify(manifest);
 
         const swPath = path.join(outDir, 'sw.js');
@@ -94,7 +134,8 @@ export default function VitePWA(userOptions = {}) {
           const swContent = await fs.readFile(swPath, 'utf-8');
           const withManifest = swContent.split(manifestPlaceholder).join(manifestJson);
           const withVersion = withManifest.split(cacheVersionPlaceholder).join(JSON.stringify(buildHash));
-          await fs.writeFile(swPath, withVersion);
+          const withBase = withVersion.split(basePlaceholder).join(JSON.stringify(resolvedBase));
+          await fs.writeFile(swPath, withBase);
         } catch (error) {
           if (error && error.code !== 'ENOENT') {
             console.warn(`[pwa] Failed to update service worker: ${error.message}`);

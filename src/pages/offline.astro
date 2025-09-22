@@ -1,23 +1,104 @@
 ---
 import Base from '../layouts/Base.astro';
+import type { SeoInput } from '../utils/seo';
 
-const seo = {
-  title: 'Offline režim',
-  description: 'Tato stránka je dostupná i bez připojení k internetu.',
+const homeHref = import.meta.env.BASE_URL || '/';
+
+const seo: SeoInput = {
+  title: 'Jste offline | Martin Bangho',
+  description:
+    'Vypadá to, že jste offline. Zkuste zkontrolovat připojení k internetu nebo stránku načíst znovu.',
+  canonical: 'https://bangho.cz/offline/',
+  ogDescription:
+    'Zkuste zkontrolovat připojení k internetu nebo stránku načíst znovu, aby se vám web Martina Bangha načetl správně.',
+  ogUrl: 'https://bangho.cz/offline/',
 };
 ---
 
-<Base seo={seo}>
-  <section class="offline-state pt-120 pb-120">
-    <div class="container text-center">
-      <h1>Jste offline</h1>
+<Base seo={seo} navClass="is-transparent">
+  <Fragment slot="head">
+    <style>
+      .offline-page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        padding: 3rem 1.5rem;
+        text-align: center;
+      }
+
+      .offline-card {
+        max-width: 32rem;
+        margin: 0 auto;
+        padding: 2.5rem 2rem;
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.15);
+        backdrop-filter: blur(12px);
+      }
+
+      .offline-card h1 {
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        margin-bottom: 1rem;
+      }
+
+      .offline-card p {
+        margin-bottom: 1.75rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .offline-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+      }
+
+      .offline-actions a,
+      .offline-actions button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .offline-actions a {
+        background: #1f2937;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .offline-actions button {
+        background: #f3f4f6;
+        color: #1f2937;
+      }
+
+      .offline-actions a:hover,
+      .offline-actions button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+      }
+    </style>
+  </Fragment>
+
+  <main class="offline-page">
+    <section class="offline-card" aria-labelledby="offline-heading">
+      <h1 id="offline-heading">Vypadá to, že jste offline</h1>
       <p>
-        Obsah se načte hned, jakmile budete mít znovu připojení k internetu. Zatím můžete
-        procházet uložené stránky nebo se vrátit na úvodní stranu.
+        Nemůžeme se připojit k internetu, ale obsah máte k dispozici i bez něj.
+        Jakmile budete online, obnovte stránku a pokračujte ve čtení.
       </p>
-      <p>
-        <a class="btn btn-primary" href="/">Zpět na úvod</a>
-      </p>
-    </div>
-  </section>
+      <div class="offline-actions">
+        <a href={homeHref}>Zpět na úvodní stránku</a>
+        <button type="button" onclick="window.location.reload()">Zkusit znovu</button>
+      </div>
+    </section>
+  </main>
 </Base>

@@ -5,11 +5,43 @@ const PRECACHE_NAME = `precache-${CACHE_VERSION}`;
 const PAGE_CACHE = `pages-${CACHE_VERSION}`;
 const FONT_CACHE = `font-${CACHE_VERSION}`;
 const IMAGE_CACHE = `image-${CACHE_VERSION}`;
-const OFFLINE_URL = '/offline/index.html';
+const BASE_URL = typeof __ASTRO_BASE__ !== 'undefined' ? __ASTRO_BASE__ : '/';
+const NORMALIZED_BASE = normalizeBase(BASE_URL);
+const OFFLINE_URL = withBase('/offline/index.html');
 
 const PRECACHE_MANIFEST =
   typeof __PRECACHE_MANIFEST__ !== 'undefined' ? __PRECACHE_MANIFEST__ : [];
 const PRECACHE_URLS = Array.from(new Set(PRECACHE_MANIFEST.map((entry) => entry.url)));
+
+if (!PRECACHE_URLS.includes(OFFLINE_URL)) {
+  PRECACHE_URLS.push(OFFLINE_URL);
+}
+
+function normalizeBase(base) {
+  if (!base || base === '/' || base === './') {
+    return '';
+  }
+
+  let normalized = base;
+  if (!normalized.startsWith('/')) {
+    normalized = `/${normalized}`;
+  }
+
+  if (normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  return normalized;
+}
+
+function withBase(pathname) {
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  if (!NORMALIZED_BASE) {
+    return normalizedPath;
+  }
+
+  return `${NORMALIZED_BASE}${normalizedPath}`;
+}
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
