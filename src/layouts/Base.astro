@@ -99,6 +99,36 @@ gtag('config', 'G-92X11QBKZL');`}
       </Footer>
     </div>
     <slot name="after-content" />
+    <script type="module" is:inline>
+      const loadContactForms = async () => {
+        if (!document.querySelector('form[data-contact-form]')) {
+          return;
+        }
+
+        try {
+          const [{ initContactForms }] = await Promise.all([
+            import('../scripts/contact-form.ts'),
+          ]);
+          initContactForms();
+        } catch (error) {
+          console.error('Failed to initialise contact forms', error);
+        }
+      };
+
+      const scheduleContactForms = () => {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadContactForms, { timeout: 2000 });
+        } else {
+          window.addEventListener('load', loadContactForms, { once: true });
+        }
+      };
+
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        scheduleContactForms();
+      } else {
+        document.addEventListener('DOMContentLoaded', scheduleContactForms, { once: true });
+      }
+    </script>
     {shouldRegisterSw && (
       <script>
         {`if ('serviceWorker' in navigator) {

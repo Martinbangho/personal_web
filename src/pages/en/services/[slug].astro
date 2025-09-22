@@ -44,26 +44,6 @@ const professionalServiceJsonLd = await buildProfessionalServiceJsonLd('en');
   <Fragment slot="head">
     <!-- reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
-    <script>
-      {`grecaptcha.ready(function () {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    grecaptcha
-      .execute('6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI', {
-        action: 'submit',
-      })
-      .then(function (token) {
-        const responseInput = document.getElementById('recaptchaResponse');
-        if (responseInput) {
-          responseInput.value = token;
-        }
-        form.submit();
-      });
-  });
-});`}
-    </script>
 
     <!-- Structured data -->
     <script type="application/ld+json">

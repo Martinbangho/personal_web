@@ -1685,12 +1685,13 @@ const seo: SeoInput = {
                   </div>
                   <div class="tj-contact-form">
                     <form
-                      action="../assets/mail.php"
+                      action="/api/contact"
+                      data-contact-form
                       id="contact-form"
                       method="post"
                       role="form"
                     >
-                      <div class="messages"></div>
+                      <div class="messages" role="status" aria-live="polite"></div>
                       <div class="row gx-3">
                         <div class="col-sm-6">
                           <div class="form_group">
@@ -1859,26 +1860,5 @@ const seo: SeoInput = {
       }
     </script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI"></script>
-    <script>
-      if (window.grecaptcha) {
-        window.grecaptcha.ready(function () {
-          const form = document.getElementById('contact-form');
-          if (!form) return;
-
-          form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            window.grecaptcha
-              .execute('6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI', { action: 'submit' })
-              .then(function (token) {
-                const responseField = document.getElementById('recaptchaResponse');
-                if (responseField) {
-                  responseField.value = token;
-                }
-                form.submit();
-              });
-          });
-        });
-      }
-    </script>
   </Fragment>
 </Base>

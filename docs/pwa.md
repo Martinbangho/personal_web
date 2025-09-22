@@ -13,7 +13,7 @@ Service worker vytváří několik cache s názvy odvozenými od build hashe:
 Při aktivaci service worker porovná aktuální seznam cache s očekávanými názvy a všechny starší verze odstraní. Díky tomu se při každém novém buildu automaticky vyčistí zastaralý obsah.
 
 ## Offline fallback
-Stránka `src/pages/offline.astro` se vyrenderuje do `/offline/index.html` a je součástí precache manifestu. Navigační požadavky používají `Network First` strategii – při selhání sítě se nejprve hledá uložená kopie stránky a pokud není k dispozici, obslouží se právě offline fallback.
+Stránka `src/pages/offline.astro` se vyrenderuje do `/offline/index.html` a je součástí precache manifestu. Navigační požadavky používají `Network First` strategii – při selhání sítě se nejprve hledá uložená kopie stránky a pokud není k dispozici, obslouží se právě offline fallback. Kontaktní formuláře v offline režimu nespadnou na chybovou stránku – `contact-form.ts` si pokusy frontuje v paměti a znovu je odešle po obnovení připojení.
 
 ## Runtime strategie
 - **Externí fonty**: požadavky s `request.destination === 'font'` a cizím původem využívají `Cache First` strategii s omezením 12 položek.

@@ -207,12 +207,13 @@ seo:
                         návrhem dalšího postupu.
                       </p>
                       <form
-                        action="/assets/mail.php"
+                        action="/api/contact"
+                        data-contact-form
                         id="contact-form"
                         method="post"
                         role="form"
                       >
-                        <div class="messages"></div>
+                        <div class="messages" role="status" aria-live="polite"></div>
                         <div class="row gx-3">
                           <div class="col-sm-6">
                             <div class="form_group">
