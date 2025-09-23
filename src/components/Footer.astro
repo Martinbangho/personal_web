@@ -1,7 +1,8 @@
 ---
 import type { Locale } from '../data/navigation';
 import { socialLinks } from '../data/socials';
-import { resolveAssetPath, withBase } from '../utils/paths';
+import { prependForwardSlash, withBase } from '../utils/paths';
+import { resolvePublicAsset } from '../utils/publicAssets';
 import '../styles/components/footer.css';
 
 interface Props {
@@ -20,7 +21,7 @@ const content = {
       'Potion je newsletter, který každých 14 dní přináší to nejdůležitější ze světa SEO, AI a marketingu – stručně, prakticky a bez balastu.',
     ctaHref: 'https://www.potion.cz',
     ctaLabel: 'Potion Newsletter',
-    privacyHref: '/zpracovani-osobnich-udaju',
+    privacyHref: 'zpracovani-osobnich-udaju',
     privacyLabel: 'Zpracování osobních údajů',
     copyright:
       '© 2025 Martin Bangho<br />SEO Konzultant & AI Strategist',
@@ -34,7 +35,7 @@ const content = {
       'Potion is a newsletter that brings you the most important news from the world of SEO, AI, and marketing every 14 days – concisely, practically, and without fluff.',
     ctaHref: 'https://www.potion.cz',
     ctaLabel: 'Potion Newsletter',
-    privacyHref: '/en/processing-of-personal-data',
+    privacyHref: 'en/processing-of-personal-data',
     privacyLabel: 'Privacy Policy',
     copyright:
       '© 2025 Martin Bangho<br />SEO Consultant & AI Strategist',
@@ -52,7 +53,7 @@ const content = {
 }>;
 
 const localeContent = content[lang];
-const privacyHref = withBase(localeContent.privacyHref);
+const privacyHref = withBase(prependForwardSlash(localeContent.privacyHref));
 const [
   footerShape1,
   footerShape2,
@@ -67,7 +68,7 @@ const [
   'sluzby/img/shape/star-5b.svg',
   'sluzby/img/shape/star-5b.svg',
   'sluzby/img/shape/line-round-7b.svg',
-].map(resolveAssetPath);
+].map(resolvePublicAsset);
 ---
 <footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
   <img class="footer-shape shape-1b" src={footerShape1} alt="shape" />

@@ -4,9 +4,9 @@ import { getNavigation } from '../data/navigation';
 import {
   isExternalHref,
   prependForwardSlash,
-  resolveAssetPath,
   withBase,
 } from '../utils/paths';
+import { resolvePublicAsset } from '../utils/publicAssets';
 import '../styles/components/navigation.css';
 
 interface Props {
@@ -38,7 +38,9 @@ const resolveNavigationHref = (
 };
 
 const logoHref = resolveNavigationHref(navigation.logoHref) ?? withBase('');
-const logoSrc = resolveAssetPath('assets/img/logo.ico');
+const logoSrc = resolvePublicAsset(
+  new URL('../../public/assets/img/logo.ico', import.meta.url),
+);
 const menu = navigation.menu.map((item) => ({
   ...item,
   href: resolveNavigationHref(item.href, item.external),
@@ -50,7 +52,7 @@ const menu = navigation.menu.map((item) => ({
 const languages = navigation.languages.map((language) => ({
   ...language,
   href: resolveNavigationHref(language.href),
-  flag: resolveAssetPath(language.flag),
+  flag: resolvePublicAsset(language.flag),
 }));
 const headerClasses = ['theme-main-menu', 'theme-menu-three', headerClass]
   .filter(Boolean)
