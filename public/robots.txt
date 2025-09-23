@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /chyba.html
-Disallow: /odeslano.html
-Disallow: /assets/img/kate/
-Disallow: /ochrana-osobnich-udaju.html
-
-Sitemap: https://www.bangho.cz/sitemap.xml
