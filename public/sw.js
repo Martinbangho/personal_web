@@ -5,9 +5,16 @@ const PRECACHE_NAME = `precache-${CACHE_VERSION}`;
 const PAGE_CACHE = `pages-${CACHE_VERSION}`;
 const FONT_CACHE = `font-${CACHE_VERSION}`;
 const IMAGE_CACHE = `image-${CACHE_VERSION}`;
-const BASE_URL = typeof __ASTRO_BASE__ !== 'undefined' ? __ASTRO_BASE__ : '/';
-const NORMALIZED_BASE = normalizeBase(BASE_URL);
-const OFFLINE_URL = withBase('/offline/index.html');
+const scopeUrl = (() => {
+  try {
+    return ensureTrailingSlash(new URL(self.registration.scope));
+  } catch (error) {
+    const base = typeof __ASTRO_BASE__ !== 'undefined' ? __ASTRO_BASE__ : '/';
+    return ensureTrailingSlash(new URL(base, self.location.origin));
+  }
+})();
+const scopeHref = scopeUrl.href;
+const OFFLINE_URL = withBase('./offline/index.html');
 
 const PRECACHE_MANIFEST =
   typeof __PRECACHE_MANIFEST__ !== 'undefined' ? __PRECACHE_MANIFEST__ : [];
@@ -17,30 +24,21 @@ if (!PRECACHE_URLS.includes(OFFLINE_URL)) {
   PRECACHE_URLS.push(OFFLINE_URL);
 }
 
-function normalizeBase(base) {
-  if (!base || base === '/' || base === './') {
-    return '';
+function ensureTrailingSlash(url) {
+  if (!url.pathname.endsWith('/')) {
+    url.pathname = `${url.pathname}/`;
   }
 
-  let normalized = base;
-  if (!normalized.startsWith('/')) {
-    normalized = `/${normalized}`;
-  }
-
-  if (normalized.endsWith('/')) {
-    normalized = normalized.slice(0, -1);
-  }
-
-  return normalized;
+  return url;
 }
 
-function withBase(pathname) {
-  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  if (!NORMALIZED_BASE) {
-    return normalizedPath;
-  }
+function resolveFromScope(path = './') {
+  return new URL(path, scopeHref);
+}
 
-  return `${NORMALIZED_BASE}${normalizedPath}`;
+function withBase(path = './') {
+  const resolved = resolveFromScope(path);
+  return `${resolved.pathname}${resolved.search}${resolved.hash}`;
 }
 
 self.addEventListener('install', (event) => {
@@ -223,7 +221,7 @@ async function matchAlternateUrls(cache, request) {
   }
 
   for (const candidate of candidates) {
-    const absolute = new URL(candidate, self.location.origin).toString();
+    const absolute = resolveFromScope(candidate).toString();
     const match = (await cache.match(candidate)) || (await cache.match(absolute));
     if (match) {
       return match;
@@ -235,8 +233,6 @@ async function matchAlternateUrls(cache, request) {
 
 async function matchCachedUrl(url) {
   const cache = await caches.open(PRECACHE_NAME);
-  return (
-    (await cache.match(url)) ||
-    (await cache.match(new URL(url, self.location.origin).toString()))
-  );
+  const absoluteUrl = resolveFromScope(url).toString();
+  return (await cache.match(url)) || (await cache.match(absoluteUrl));
 }

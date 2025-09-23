@@ -24,7 +24,8 @@ const {
 
 const seoTags = seo ? buildSeoTags(lang, seo) : null;
 const shouldRegisterSw = import.meta.env.PROD;
-const serviceWorkerPath = withBase('sw.js');
+const serviceWorkerPath = withBase('/sw.js');
+const serviceWorkerScope = withBase();
 const backgrounds = {
   selectArrow: resolveAssetPath('assets/img/icons/down-arrow.svg'),
   heroBanner: resolveAssetPath('assets/img/hero/hero-bg-shap-3a.svg'),
@@ -202,9 +203,11 @@ gtag('config', 'G-92X11QBKZL');`}
       <script>
         {`if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('${serviceWorkerPath}').catch((error) => {
-      console.error('Service worker registration failed', error);
-    });
+    navigator.serviceWorker
+      .register('${serviceWorkerPath}', { scope: '${serviceWorkerScope}' })
+      .catch((error) => {
+        console.error('Service worker registration failed', error);
+      });
   });
 }`}
       </script>
