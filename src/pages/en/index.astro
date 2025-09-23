@@ -7,7 +7,7 @@ import {
   testimonialPortraits,
   iconImages,
 } from '../../data/media';
-import { resolveAssetPath, withBase } from '../../utils/paths';
+import { prependForwardSlash, withBase } from '../../utils/paths';
 import type { SeoInput } from '../../utils/seo';
 import '../../styles/landing/motion.css';
 import '../../styles/landing/hero.css';
@@ -33,7 +33,7 @@ const seo: SeoInput = {
   ],
 };
 
-const asset = resolveAssetPath;
+const asset = (path: string) => withBase(prependForwardSlash(path));
 ---
 
 <Base lang="en" seo={seo}>

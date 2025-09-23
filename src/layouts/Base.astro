@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import type { Locale } from '../data/navigation';
 import type { SeoInput } from '../utils/seo';
 import { buildSeoTags } from '../utils/seo';
-import { resolveAssetPath, withBase } from '../utils/paths';
+import { resolvePublicAsset } from '../utils/publicAssets';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
@@ -24,19 +24,75 @@ const {
 
 const seoTags = seo ? buildSeoTags(lang, seo) : null;
 const shouldRegisterSw = import.meta.env.PROD;
-const serviceWorkerPath = withBase('sw.js');
+const serviceWorkerPath = resolvePublicAsset('sw.js');
+const appleTouchIcon = resolvePublicAsset(
+  new URL('../../public/apple-touch-icon.png', import.meta.url),
+);
+const favicon32 = resolvePublicAsset(
+  new URL('../../public/favicon-32x32.png', import.meta.url),
+);
+const favicon16 = resolvePublicAsset(
+  new URL('../../public/favicon-16x16.png', import.meta.url),
+);
+const siteManifest = resolvePublicAsset(
+  new URL('../../public/site.webmanifest', import.meta.url),
+);
+const safariPinnedTab = resolvePublicAsset(
+  new URL('../../public/safari-pinned-tab.svg', import.meta.url),
+);
 const backgrounds = {
-  selectArrow: resolveAssetPath('assets/img/icons/down-arrow.svg'),
-  heroBanner: resolveAssetPath('assets/img/hero/hero-bg-shap-3a.svg'),
-  featureShape: resolveAssetPath('sluzby/img/shape/topograph-1c.svg'),
-  authorQuote: resolveAssetPath('assets/img/icon/icon-45.svg'),
-  projectInfo: resolveAssetPath('assets/img/work/big-img-01.jpg'),
-  videoPrimary: resolveAssetPath('assets/img/video/video-1b.jpg'),
-  videoSecondary: resolveAssetPath('assets/img/video/video-2d.jpg'),
-  priceBackground: resolveAssetPath('img/bg/price-bg-1c.svg'),
-  planShape: resolveAssetPath('sluzby/img/shape/topograph-2c.svg'),
-  errorSpiral: resolveAssetPath('sluzby/img/shape/spiral-1e.svg'),
+  selectArrow: resolvePublicAsset('assets/img/icons/down-arrow.svg'),
+  heroBanner: resolvePublicAsset('assets/img/hero/hero-bg-shap-3a.svg'),
+  featureShape: resolvePublicAsset('sluzby/img/shape/topograph-1c.svg'),
+  authorQuote: resolvePublicAsset('assets/img/icon/icon-45.svg'),
+  projectInfo: resolvePublicAsset('assets/img/work/big-img-01.jpg'),
+  videoPrimary: resolvePublicAsset('assets/img/video/video-1b.jpg'),
+  videoSecondary: resolvePublicAsset('assets/img/video/video-2d.jpg'),
+  priceBackground: resolvePublicAsset('img/bg/price-bg-1c.svg'),
+  planShape: resolvePublicAsset('sluzby/img/shape/topograph-2c.svg'),
+  errorSpiral: resolvePublicAsset('sluzby/img/shape/spiral-1e.svg'),
 };
+const backgroundStyles = `
+  .tj-nice-select::after {
+    background-image: url("${backgrounds.selectArrow}");
+  }
+
+  .theme-banner-three::before {
+    background-image: url("${backgrounds.heroBanner}");
+  }
+
+  .feature-style-five::before {
+    background-image: url("${backgrounds.featureShape}");
+  }
+
+  .author-blockquote::before {
+    background-image: url("${backgrounds.authorQuote}");
+  }
+
+  .project-info {
+    background-image: url("${backgrounds.projectInfo}");
+  }
+
+  .video-wrapper {
+    background-image: url("${backgrounds.videoPrimary}");
+  }
+
+  .techy-video {
+    background-image: url("${backgrounds.videoSecondary}");
+  }
+
+  .bg-wrapper-one {
+    background-image: url("${backgrounds.priceBackground}");
+  }
+
+  .plan::before {
+    background-image: url("${backgrounds.planShape}");
+  }
+
+  .error-page-bg {
+    background-image: url("${backgrounds.errorSpiral}");
+  }
+`;
 ---
 
 <!DOCTYPE html>
@@ -47,25 +103,11 @@ const backgrounds = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="msapplication-TileColor" content="#9f00a7" />
     <meta name="theme-color" content="#ffffff" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={withBase('apple-touch-icon.png')}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href={withBase('favicon-32x32.png')}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href={withBase('favicon-16x16.png')}
-    />
-    <link rel="manifest" href={withBase('site.webmanifest')} />
-    <link rel="mask-icon" href={withBase('safari-pinned-tab.svg')} color="#5bbad5" />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
+    <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+    <link rel="manifest" href={siteManifest} />
+    <link rel="mask-icon" href={safariPinnedTab} color="#5bbad5" />
     <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,53 +119,13 @@ const backgrounds = {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
     />
-    <link rel="stylesheet" href={resolveAssetPath('assets/css/bootstrap.min.css')} />
-    <link rel="stylesheet" href={resolveAssetPath('assets/css/font-awesome-pro.min.css')} />
-    <link rel="stylesheet" href={resolveAssetPath('assets/css/flaticon_gerold.css')} />
-    <link rel="stylesheet" href={resolveAssetPath('assets/css/all.min.css')} />
-    <link rel="stylesheet" href={resolveAssetPath('assets/fonts/bootstrap-icons/font-css.css')} />
-    <link rel="stylesheet" href={resolveAssetPath('assets/fonts/custom-font/css/clash-display.css')} />
-    <style is:inline>
-      .tj-nice-select::after {
-        background-image: url({backgrounds.selectArrow});
-      }
-
-      .theme-banner-three::before {
-        background-image: url({backgrounds.heroBanner});
-      }
-
-      .feature-style-five::before {
-        background-image: url({backgrounds.featureShape});
-      }
-
-      .author-blockquote::before {
-        background-image: url({backgrounds.authorQuote});
-      }
-
-      .project-info {
-        background-image: url({backgrounds.projectInfo});
-      }
-
-      .video-wrapper {
-        background-image: url({backgrounds.videoPrimary});
-      }
-
-      .techy-video {
-        background-image: url({backgrounds.videoSecondary});
-      }
-
-      .bg-wrapper-one {
-        background-image: url({backgrounds.priceBackground});
-      }
-
-      .plan::before {
-        background-image: url({backgrounds.planShape});
-      }
-
-      .error-page-bg {
-        background-image: url({backgrounds.errorSpiral});
-      }
-    </style>
+    <link rel="stylesheet" href={resolvePublicAsset('assets/css/bootstrap.min.css')} />
+    <link rel="stylesheet" href={resolvePublicAsset('assets/css/font-awesome-pro.min.css')} />
+    <link rel="stylesheet" href={resolvePublicAsset('assets/css/flaticon_gerold.css')} />
+    <link rel="stylesheet" href={resolvePublicAsset('assets/css/all.min.css')} />
+    <link rel="stylesheet" href={resolvePublicAsset('assets/fonts/bootstrap-icons/font-css.css')} />
+    <link rel="stylesheet" href={resolvePublicAsset('assets/fonts/custom-font/css/clash-display.css')} />
+    <style is:inline set:html={backgroundStyles} />
     {seoTags && (
       <>
         <title>{seoTags.title}</title>
