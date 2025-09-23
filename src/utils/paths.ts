@@ -33,7 +33,5 @@ export const resolveHref = (href: string | undefined, options: { external?: bool
   return withBase(prependForwardSlash(href));
 };
 
-export const resolveAssetPath = (path: string) => withBase(prependForwardSlash(path));
-
 export const isExternalHref = (href: string | undefined) =>
   typeof href === 'string' && isExternalLike(href);

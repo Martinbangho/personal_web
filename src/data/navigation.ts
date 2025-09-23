@@ -21,7 +21,7 @@ export interface LanguageLink {
   label: string;
   shortLabel: string;
   href: string;
-  flag: string;
+  flag: URL;
   hreflang: string;
 }
 
@@ -33,6 +33,11 @@ export interface NavigationData {
   languages: LanguageLink[];
   languageButtonLabel: string;
 }
+
+const flagIcons = {
+  cs: new URL('../../public/assets/img/flags/cz.svg', import.meta.url),
+  en: new URL('../../public/assets/img/flags/gb.svg', import.meta.url),
+} as const;
 
 const navigation: Record<Locale, NavigationData> = {
   cs: {
@@ -104,7 +109,7 @@ const navigation: Record<Locale, NavigationData> = {
         label: 'Čeština',
         shortLabel: 'CZ',
         href: '',
-        flag: 'assets/img/flags/cz.svg',
+        flag: flagIcons.cs,
         hreflang: 'cs',
       },
       {
@@ -112,7 +117,7 @@ const navigation: Record<Locale, NavigationData> = {
         label: 'English',
         shortLabel: 'EN',
         href: 'en/',
-        flag: 'assets/img/flags/gb.svg',
+        flag: flagIcons.en,
         hreflang: 'en',
       },
     ],
@@ -187,7 +192,7 @@ const navigation: Record<Locale, NavigationData> = {
         label: 'Čeština',
         shortLabel: 'CZ',
         href: '',
-        flag: 'assets/img/flags/cz.svg',
+        flag: flagIcons.cs,
         hreflang: 'cs',
       },
       {
@@ -195,7 +200,7 @@ const navigation: Record<Locale, NavigationData> = {
         label: 'English',
         shortLabel: 'EN',
         href: 'en/',
-        flag: 'assets/img/flags/gb.svg',
+        flag: flagIcons.en,
         hreflang: 'en',
       },
     ],

@@ -1,7 +1,7 @@
 import type { ResponsiveImageProps, ResponsiveSource } from '../components/ResponsiveImage.astro';
-import { resolveAssetPath } from '../utils/paths';
 
-const assetPath = (path: string) => resolveAssetPath(`assets/${path}`);
+const assetUrl = (path: string) =>
+  new URL(`../../public/assets/${path}`, import.meta.url);
 
 export type ImageSource = ResponsiveSource;
 
@@ -15,40 +15,40 @@ type ImageMap = Record<string, ImageMetadata>;
 type GalleryMap = Record<string, ImageMetadata[]>;
 
 export const heroPortrait: ImageMetadata = {
-  src: assetPath('img/hero/me.png'),
+  src: assetUrl('img/hero/me.png'),
   width: 1920,
   height: 1920,
   sources: [
     {
       type: 'image/webp',
-      srcset: assetPath('img/hero/me.webp'),
+      srcset: assetUrl('img/hero/me.webp'),
     },
   ],
 };
 
 export const testimonialPortraits: ImageMap = {
   kejval: {
-    src: assetPath('img/testimonials/user/kejval.jpg'),
+    src: assetUrl('img/testimonials/user/kejval.jpg'),
     width: 491,
     height: 491,
   },
   zatkovic: {
-    src: assetPath('img/testimonials/user/zatkovic.webp'),
+    src: assetUrl('img/testimonials/user/zatkovic.webp'),
     width: 1365,
     height: 1365,
   },
   vlcek: {
-    src: assetPath('img/testimonials/user/vlcek.jpg'),
+    src: assetUrl('img/testimonials/user/vlcek.jpg'),
     width: 1310,
     height: 1310,
   },
   kapic: {
-    src: assetPath('img/testimonials/user/kapic.jpg'),
+    src: assetUrl('img/testimonials/user/kapic.jpg'),
     width: 1638,
     height: 1638,
   },
   architekti: {
-    src: assetPath('img/testimonials/user/architekti.jpg'),
+    src: assetUrl('img/testimonials/user/architekti.jpg'),
     width: 300,
     height: 300,
   },
@@ -57,61 +57,61 @@ export const testimonialPortraits: ImageMap = {
 export const portfolioGalleryImages: GalleryMap = {
   o2: [
     {
-      src: assetPath('img/portfolio-gallery/o2_2.png'),
+      src: assetUrl('img/portfolio-gallery/o2_2.png'),
       width: 1119,
       height: 560,
     },
     {
-      src: assetPath('img/portfolio-gallery/o2_3.png'),
+      src: assetUrl('img/portfolio-gallery/o2_3.png'),
       width: 1114,
       height: 557,
     },
     {
-      src: assetPath('img/portfolio-gallery/o2_4.png'),
+      src: assetUrl('img/portfolio-gallery/o2_4.png'),
       width: 1114,
       height: 557,
     },
     {
-      src: assetPath('img/portfolio-gallery/o2_5.png'),
+      src: assetUrl('img/portfolio-gallery/o2_5.png'),
       width: 600,
       height: 300,
     },
   ],
   sofa: [
     {
-      src: assetPath('img/portfolio-gallery/sofa_2.png'),
+      src: assetUrl('img/portfolio-gallery/sofa_2.png'),
       width: 1617,
       height: 808,
     },
     {
-      src: assetPath('img/portfolio-gallery/sofa_3.png'),
+      src: assetUrl('img/portfolio-gallery/sofa_3.png'),
       width: 1699,
       height: 850,
     },
     {
-      src: assetPath('img/portfolio-gallery/sofa_4.png'),
+      src: assetUrl('img/portfolio-gallery/sofa_4.png'),
       width: 1701,
       height: 850,
     },
     {
-      src: assetPath('img/portfolio-gallery/sofa_5.png'),
+      src: assetUrl('img/portfolio-gallery/sofa_5.png'),
       width: 1703,
       height: 852,
     },
   ],
   security: [
     {
-      src: assetPath('img/portfolio-gallery/avast.png'),
+      src: assetUrl('img/portfolio-gallery/avast.png'),
       width: 1631,
       height: 842,
     },
     {
-      src: assetPath('img/portfolio-gallery/norton.png'),
+      src: assetUrl('img/portfolio-gallery/norton.png'),
       width: 1612,
       height: 833,
     },
     {
-      src: assetPath('img/portfolio-gallery/lifelock.png'),
+      src: assetUrl('img/portfolio-gallery/lifelock.png'),
       width: 1612,
       height: 861,
     },
@@ -120,7 +120,7 @@ export const portfolioGalleryImages: GalleryMap = {
 
 export const iconImages: ImageMap = {
   n8n: {
-    src: assetPath('img/icons/n8n.png'),
+    src: assetUrl('img/icons/n8n.png'),
     width: 500,
     height: 500,
   },

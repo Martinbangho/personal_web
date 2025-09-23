@@ -1,6 +1,10 @@
 ---
+import { resolvePublicAsset } from '../utils/publicAssets';
+
+type MaybeUrl = string | URL;
+
 export interface ResponsiveSource {
-  srcset: string;
+  srcset: MaybeUrl;
   type?: string;
   media?: string;
   sizes?: string;
@@ -8,11 +12,11 @@ export interface ResponsiveSource {
 
 export interface ResponsiveImageProps {
   alt: string;
-  src: string;
+  src: MaybeUrl;
   width: number;
   height: number;
   sources?: ResponsiveSource[];
-  srcset?: string;
+  srcset?: MaybeUrl;
   sizes?: string;
   loading?: 'lazy' | 'eager';
   decoding?: 'async' | 'auto' | 'sync';
@@ -39,24 +43,28 @@ const {
 } = Astro.props as ResponsiveImageProps;
 
 const decoding = decodingProp ?? (loading === 'eager' ? 'sync' : 'async');
+const resolveAsset = (value: MaybeUrl | undefined) =>
+  value instanceof URL ? resolvePublicAsset(value) : value;
+const resolvedSrc = resolveAsset(src);
+const resolvedSrcset = resolveAsset(srcset);
 ---
 <picture class={pictureClass}>
-  {sources.map((source) => (
-    <source
-      type={source.type}
-      srcset={source.srcset}
-      media={source.media}
-      sizes={source.sizes ?? sizes}
-    />
-  ))}
+{sources.map((source) => (
+  <source
+    type={source.type}
+    srcset={resolveAsset(source.srcset)!}
+    media={source.media}
+    sizes={source.sizes ?? sizes}
+  />
+))}
   <img
-    src={src}
+    src={resolvedSrc!}
     alt={alt}
     width={width}
     height={height}
     loading={loading}
     decoding={decoding}
-    srcset={srcset}
+    srcset={resolvedSrcset}
     sizes={sizes}
     class={imgClass}
     style={style}
