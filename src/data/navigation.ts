@@ -1,5 +1,31 @@
 export type Locale = 'cs' | 'en';
 
+const localePathSegments: Record<Locale, string> = {
+  cs: '',
+  en: 'en',
+};
+
+const normalizeSegment = (value: string) => value.replace(/^\/+/, '').replace(/\/+$/, '');
+
+export const buildLocalePath = (locale: Locale, slug = '') => {
+  const prefix = normalizeSegment(localePathSegments[locale] ?? '');
+  const normalizedSlug = slug.replace(/^\/+/, '');
+
+  if (!prefix && !normalizedSlug) {
+    return '';
+  }
+
+  if (!prefix) {
+    return normalizedSlug;
+  }
+
+  if (!normalizedSlug) {
+    return `${prefix}/`;
+  }
+
+  return `${prefix}/${normalizedSlug}`;
+};
+
 export interface ContactBox {
   label: string;
   value: string;
@@ -116,7 +142,7 @@ const navigation: Record<Locale, NavigationData> = {
         code: 'en',
         label: 'English',
         shortLabel: 'EN',
-        href: 'en/',
+        href: '',
         flag: flagIcons.en,
         hreflang: 'en',
       },
@@ -124,7 +150,7 @@ const navigation: Record<Locale, NavigationData> = {
     languageButtonLabel: 'CZ',
   },
   en: {
-    logoHref: 'en/',
+    logoHref: '',
     email: 'martin@bangho.cz',
     contactBoxes: [
       {
@@ -152,39 +178,39 @@ const navigation: Record<Locale, NavigationData> = {
       {
         label: 'SEO Services',
         items: [
-          { label: 'SEO Audit', href: 'en/services/seo-audit' },
-          { label: 'Website Structure', href: 'en/services/website-structure' },
-          { label: 'Website Redesign', href: 'en/services/seo-redesign' },
-          { label: 'Keyword Analysis', href: 'en/services/keyword-analysis' },
-          { label: 'Technical SEO Audit', href: 'en/services/technical-seo-audit' },
-          { label: 'Online PR & Linkbuilding', href: 'en/services/online-pr-linkbuilding' },
-          { label: 'Competitor Analysis', href: 'en/services/competitor-analysis' },
-          { label: 'Continuous SEO', href: 'en/services/continuous-seo' },
-          { label: 'SEO Workshops', href: 'en/services/seo-workshops' },
+          { label: 'SEO Audit', href: 'services/seo-audit' },
+          { label: 'Website Structure', href: 'services/website-structure' },
+          { label: 'Website Redesign', href: 'services/seo-redesign' },
+          { label: 'Keyword Analysis', href: 'services/keyword-analysis' },
+          { label: 'Technical SEO Audit', href: 'services/technical-seo-audit' },
+          { label: 'Online PR & Linkbuilding', href: 'services/online-pr-linkbuilding' },
+          { label: 'Competitor Analysis', href: 'services/competitor-analysis' },
+          { label: 'Continuous SEO', href: 'services/continuous-seo' },
+          { label: 'SEO Workshops', href: 'services/seo-workshops' },
         ],
       },
       {
         label: 'Marketing',
         items: [
-          { label: 'Marketing Strategy', href: 'en/services/marketing-strategy' },
-          { label: 'Content Strategy', href: 'en/services/content-strategy' },
-          { label: 'Copywriting', href: 'en/services/copywriting' },
-          { label: 'Support for Startups', href: 'en/services/support-for-startups' },
-          { label: 'Marketing Workshops', href: 'en/services/marketing-workshops' },
+          { label: 'Marketing Strategy', href: 'services/marketing-strategy' },
+          { label: 'Content Strategy', href: 'services/content-strategy' },
+          { label: 'Copywriting', href: 'services/copywriting' },
+          { label: 'Support for Startups', href: 'services/support-for-startups' },
+          { label: 'Marketing Workshops', href: 'services/marketing-workshops' },
         ],
       },
       {
         label: 'AI for Businesses',
         items: [
-          { label: 'LLM Optimization', href: 'en/services/llm-optimization-geo' },
-          { label: 'AI Consulting', href: 'en/services/ai-consulting' },
-          { label: 'AI Agents & Automation', href: 'en/services/ai-agents-and-automation' },
-          { label: 'AI Workshop', href: 'en/services/ai-workshop' },
+          { label: 'LLM Optimization', href: 'services/llm-optimization-geo' },
+          { label: 'AI Consulting', href: 'services/ai-consulting' },
+          { label: 'AI Agents & Automation', href: 'services/ai-agents-and-automation' },
+          { label: 'AI Workshop', href: 'services/ai-workshop' },
         ],
       },
-      { label: 'Case Studies', href: 'en/#works-section' },
+      { label: 'Case Studies', href: '#works-section' },
       { label: 'Blog', href: 'https://blog.bangho.cz/', external: true },
-      { label: 'Contact', href: 'en/#contact-section' },
+      { label: 'Contact', href: '#contact-section' },
     ],
     languages: [
       {
@@ -199,7 +225,7 @@ const navigation: Record<Locale, NavigationData> = {
         code: 'en',
         label: 'English',
         shortLabel: 'EN',
-        href: 'en/',
+        href: '',
         flag: flagIcons.en,
         hreflang: 'en',
       },

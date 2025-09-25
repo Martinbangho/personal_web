@@ -7,6 +7,7 @@ import {
   testimonialPortraits,
   iconImages,
 } from '../data/media';
+import { buildLocalePath } from '../data/navigation';
 import { prependForwardSlash, withBase } from '../utils/paths';
 import type { SeoInput } from '../utils/seo';
 import '../styles/landing/motion.css';
@@ -37,6 +38,10 @@ const seo: SeoInput = {
 };
 
 const asset = (path: string) => withBase(prependForwardSlash(path));
+const localeLink = (slug: string) => {
+  const localePath = buildLocalePath('cs', slug);
+  return localePath ? withBase(prependForwardSlash(localePath)) : withBase('');
+};
 ---
 
 <Base seo={seo}>
@@ -1398,7 +1403,7 @@ const asset = (path: string) => withBase(prependForwardSlash(path));
                   </p>
                 </div>
                 <a
-                  href={withBase('sluzby/marketingova-strategie')}
+                  href={localeLink('sluzby/marketingova-strategie')}
                   class="btn tj-btn-secondary reveal reveal-left"
                  
                   >Chci kompletní marketing</a
@@ -1897,7 +1902,7 @@ const asset = (path: string) => withBase(prependForwardSlash(path));
                   </div>
                   <div class="tj-contact-form">
                     <form
-                      action="/api/contact"
+                      action={withBase('api/contact')}
                       data-contact-form
                       id="contact-form"
                       method="post"
