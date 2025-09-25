@@ -58,6 +58,11 @@ This document introduces the structure of the `personal_web` project so a new co
 3. Visit the printed localhost URL to browse the site. Astro supports hot-module reloading for components, styles and Markdown content.
 4. Build a production bundle with `npm run build`; preview the result via `npm run preview`.
 
+## Continuous integration
+- Pull requests and pushes trigger the `CI` workflow defined in `.github/workflows/ci.yml`. The job installs dependencies with `npm ci`, runs any available lint or unit test scripts, builds the production bundle and audits the generated output with Lighthouse CI (home page and a representative service detail page).
+- Lighthouse scores are exported to the workflow summary and the full HTML reports are uploaded as build artifacts so reviewers can inspect them without re-running the audit locally.
+- Mark the `CI` workflow status as **required** in the repository settings before deploying so regressions in build, tests or performance metrics block merges.
+
 
 ## Suggested next steps for new contributors
 - Read `docs/interactions.md` to understand the philosophy behind the JavaScript modules and how hydration is controlled.

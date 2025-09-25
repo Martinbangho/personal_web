@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - work
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Test
+        run: npm test --if-present
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.12.0 autorun --config=.lighthouserc.json
+
+      - name: Summarise Lighthouse scores
+        if: always()
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const summaryFile = process.env.GITHUB_STEP_SUMMARY;
+          const manifestPath = path.join('.lighthouseci', 'manifest.json');
+
+          if (!summaryFile || !fs.existsSync(manifestPath)) {
+            console.warn('No Lighthouse manifest found, skipping summary.');
+            process.exit(0);
+          }
+
+          const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
+          if (!Array.isArray(manifest) || manifest.length === 0) {
+            console.warn('Lighthouse manifest empty, skipping summary.');
+            process.exit(0);
+          }
+
+          const header = '| URL | Performance | Accessibility | Best Practices | SEO |';
+          const divider = '| --- | --- | --- | --- | --- |';
+          const rows = manifest.map((run) => {
+            const summary = run.summary || {};
+            const toScore = (metric) => {
+              if (typeof summary[metric] !== 'number') return 'n/a';
+              return `${Math.round(summary[metric] * 100)}`;
+            };
+
+            return `| ${run.url} | ${toScore('performance')} | ${toScore('accessibility')} | ${toScore('bestPractices')} | ${toScore('seo')} |`;
+          });
+
+          const output = ['## Lighthouse results', '', header, divider, ...rows, ''].join('\n');
+          fs.appendFileSync(summaryFile, `${output}\n`);
+          NODE
+
+      - name: Upload Lighthouse artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: .lighthouseci
+          if-no-files-found: ignore
