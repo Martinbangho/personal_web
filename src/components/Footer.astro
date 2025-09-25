@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../data/navigation';
 import { socialLinks } from '../data/socials';
+import { resolvePath } from '../utils/paths';
 import '../styles/components/footer.css';
 
 interface Props {
@@ -51,14 +52,22 @@ const content = {
 }>;
 
 const localeContent = content[lang];
+const footerShapes = {
+  star1: resolvePath('/sluzby/img/shape/star-3b.svg'),
+  star2: resolvePath('/sluzby/img/shape/star-4b.svg'),
+  star3: resolvePath('/sluzby/img/shape/star-6b.svg'),
+  star4: resolvePath('/sluzby/img/shape/star-5b.svg'),
+  star5: resolvePath('/sluzby/img/shape/star-5b.svg'),
+  line: resolvePath('/sluzby/img/shape/line-round-7b.svg'),
+};
 ---
 <footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
-  <img class="footer-shape shape-1b" src="/sluzby/img/shape/star-3b.svg" alt="shape" />
-  <img class="footer-shape shape-2b" src="/sluzby/img/shape/star-4b.svg" alt="shape" />
-  <img class="footer-shape shape-3b" src="/sluzby/img/shape/star-6b.svg" alt="shape" />
-  <img class="footer-shape shape-4b" src="/sluzby/img/shape/star-5b.svg" alt="shape" />
-  <img class="footer-shape shape-5b" src="/sluzby/img/shape/star-5b.svg" alt="shape" />
-  <img class="fot-shape-one" src="/sluzby/img/shape/line-round-7b.svg" alt="footer shape" />
+  <img class="footer-shape shape-1b" src={footerShapes.star1} alt="shape" />
+  <img class="footer-shape shape-2b" src={footerShapes.star2} alt="shape" />
+  <img class="footer-shape shape-3b" src={footerShapes.star3} alt="shape" />
+  <img class="footer-shape shape-4b" src={footerShapes.star4} alt="shape" />
+  <img class="footer-shape shape-5b" src={footerShapes.star5} alt="shape" />
+  <img class="fot-shape-one" src={footerShapes.line} alt="footer shape" />
   <div class="container">
     <div class="row gx-4 gx-xxl-5 mb-10">
       <div class="col-xxl-1 col-md-1"></div>
@@ -97,7 +106,7 @@ const localeContent = content[lang];
         <div class="col-xl-4 col-lg-4 pb-30">
           <ul class="fot-list text-center d-sm-flex align-items-center justify-content-center justify-content-lg-start">
             <li>
-              <a href={localeContent.privacyHref}>{localeContent.privacyLabel}</a>
+              <a href={resolvePath(localeContent.privacyHref)}>{localeContent.privacyLabel}</a>
             </li>
           </ul>
         </div>

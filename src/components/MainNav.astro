@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../data/navigation';
 import { getNavigation } from '../data/navigation';
+import { resolvePath } from '../utils/paths';
 import '../styles/components/navigation.css';
 
 interface Props {
@@ -29,6 +30,7 @@ const externalAttrs = {
   target: '_blank',
   rel: 'noreferrer',
 };
+const logoSrc = resolvePath('/assets/img/logo.ico');
 ---
 <header class={headerClasses}>
   <div class={topHeaderClasses}>
@@ -39,7 +41,7 @@ const externalAttrs = {
             <div>
               <a href={navigation.logoHref}>
                 <img
-                  src="/assets/img/logo.ico"
+                  src={logoSrc}
                   alt="Logo Martin Bangho"
                   width="60"
                   height="60"
@@ -193,7 +195,7 @@ const externalAttrs = {
   </div>
   <div class="mobile-header px-1 py-2 d-flex align-items-center">
     <a href={navigation.logoHref} class="d-flex align-items-center text-white text-decoration-none">
-      <img src="/assets/img/logo.ico" alt="Logo" width="46" height="46" class="me-2" />
+      <img src={logoSrc} alt="Logo" width="46" height="46" class="me-2" />
     </a>
     <span class="mobile-email">{navigation.email}</span>
   </div>

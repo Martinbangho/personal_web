@@ -361,7 +361,7 @@ a h6:hover {
 	top: 50%;
 	right: 10px;
 	position: absolute;
-	background: url(/assets/img/icons/down-arrow.svg);
+    background: var(--asset-select-arrow);
 	background-position: center;
 	background-size: cover;
 	border: none;

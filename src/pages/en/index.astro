@@ -8,6 +8,7 @@ import {
   iconImages,
 } from '../../data/media';
 import type { SeoInput } from '../../utils/seo';
+import { resolvePath } from '../../utils/paths';
 import '../../styles/landing/motion.css';
 import '../../styles/landing/hero.css';
 import '../../styles/landing/services.css';
@@ -31,6 +32,7 @@ const seo: SeoInput = {
     { href: 'https://bangho.cz/en/', hreflang: 'x-default' },
   ],
 };
+const withBase = (path: string) => resolvePath(path) ?? path;
 ---
 
 <Base lang="en" seo={seo}>
@@ -606,7 +608,7 @@ const seo: SeoInput = {
 
                               <div class="portfolio-item">
                                   <div class="image-box">
-                                      <img src="/assets/img/portfolio/O2-Logo.svg" alt="" />
+                                      <img src={withBase('/assets/img/portfolio/O2-Logo.svg')} alt="" />
                                   </div>
                                   <div class="content-box">
                                       <h3 class="portfolio-title">O2 Czech Republic</h3>
@@ -617,7 +619,7 @@ const seo: SeoInput = {
                               </div>
                               <div class="portfolio-item">
                                   <div class="image-box">
-                                      <img src="/assets/img/portfolio/Gen_logo.svg" alt="" />
+                                      <img src={withBase('/assets/img/portfolio/Gen_logo.svg')} alt="" />
                                   </div>
                                   <div class="content-box">
                                       <h3 class="portfolio-title">Gen Digital Inc.</h3>
@@ -639,7 +641,7 @@ const seo: SeoInput = {
                               <div class="skill-item reveal reveal-up">
                                   <div class="skill-inner">
                                       <div class="icon-box">
-                                          <img src="/assets/img/portfolio/angry.svg" alt="" />
+                                          <img src={withBase('/assets/img/portfolio/angry.svg')} alt="" />
                                       </div>
                                       <div class="number">Angry Beards</div>
                                   </div>
@@ -647,7 +649,7 @@ const seo: SeoInput = {
                               <div class="skill-item reveal reveal-up">
                                   <div class="skill-inner">
                                       <div class="icon-box">
-                                          <img src="/assets/img/portfolio/srovname.svg" alt="" />
+                                          <img src={withBase('/assets/img/portfolio/srovname.svg')} alt="" />
                                       </div>
                                       <div class="number">Srovnáme</div>
                                   </div>
@@ -655,7 +657,7 @@ const seo: SeoInput = {
                               <div class="skill-item reveal reveal-up">
                                   <div class="skill-inner">
                                       <div class="icon-box">
-                                          <img src="/assets/img/portfolio/avast.svg" alt="" />
+                                          <img src={withBase('/assets/img/portfolio/avast.svg')} alt="" />
                                       </div>
                                       <div class="number">Avast</div>
                                   </div>
@@ -663,7 +665,7 @@ const seo: SeoInput = {
                               <div class="skill-item reveal reveal-up">
                                   <div class="skill-inner">
                                       <div class="icon-box">
-                                          <img src="/assets/img/portfolio/norton.svg" alt="" />
+                                          <img src={withBase('/assets/img/portfolio/norton.svg')} alt="" />
                                       </div>
                                       <div class="number">Norton</div>
                                   </div>
@@ -671,7 +673,7 @@ const seo: SeoInput = {
                               <div class="skill-item reveal reveal-up">
                                   <div class="skill-inner">
                                       <div class="icon-box">
-                                          <img src="/assets/img/portfolio/cockyna.svg" alt="" />
+                                          <img src={withBase('/assets/img/portfolio/cockyna.svg')} alt="" />
                                       </div>
                                       <div class="number">Čočkýna</div>
                                   </div>
@@ -1079,7 +1081,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/scf.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/scf.svg')} alt="" />
                       </div>
                       <div class="number">Screaming Frog</div>
                     </div>
@@ -1087,7 +1089,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/Ahrefs.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/Ahrefs.svg')} alt="" />
                       </div>
                       <div class="number">Ahrefs<br /></div>
                     </div>
@@ -1096,7 +1098,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/gsc.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/gsc.svg')} alt="" />
                       </div>
                       <div class="number">Search Console</div>
                     </div>
@@ -1104,7 +1106,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/ga.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/ga.svg')} alt="" />
                       </div>
                       <div class="number">Google Analytics</div>
                     </div>
@@ -1112,7 +1114,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/looker.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/looker.svg')} alt="" />
                       </div>
                       <div class="number">Data Analytics</div>
                     </div>
@@ -1120,7 +1122,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/wp.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/wp.svg')} alt="" />
                       </div>
                       <div class="number">CMS<br />Systems</div>
                     </div>
@@ -1128,7 +1130,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/html.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/html.svg')} alt="" />
                       </div>
                       <div class="number">Web &<br />Development</div>
                     </div>
@@ -1136,7 +1138,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/chatgpt.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/chatgpt.svg')} alt="" />
                       </div>
                       <div class="number">AI Tools<br />& LLMs</div>
                     </div>
@@ -1155,7 +1157,7 @@ const seo: SeoInput = {
                   <div class="skill-item reveal reveal-up">
                     <div class="skill-inner">
                       <div class="icon-box">
-                        <img src="/assets/img/icons/jira.svg" alt="" />
+                        <img src={withBase('/assets/img/icons/jira.svg')} alt="" />
                       </div>
                       <div class="number">Project Management</div>
                     </div>

@@ -1,3 +1,5 @@
+import { resolvePath } from '../utils/paths';
+
 export type Locale = 'cs' | 'en';
 
 export interface ContactBox {
@@ -203,6 +205,29 @@ const navigation: Record<Locale, NavigationData> = {
   },
 };
 
-export const getNavigation = (lang: Locale = 'cs') => navigation[lang];
+const mapMenuItem = (item: MenuItem): MenuItem => ({
+  ...item,
+  href: resolvePath(item.href) ?? item.href,
+  items: item.items?.map(mapMenuItem),
+});
+
+export const getNavigation = (lang: Locale = 'cs') => {
+  const config = navigation[lang];
+
+  return {
+    ...config,
+    logoHref: resolvePath(config.logoHref) ?? config.logoHref,
+    contactBoxes: config.contactBoxes.map((box) => ({
+      ...box,
+      href: resolvePath(box.href) ?? box.href,
+    })),
+    menu: config.menu.map(mapMenuItem),
+    languages: config.languages.map((language) => ({
+      ...language,
+      href: resolvePath(language.href) ?? language.href,
+      flag: resolvePath(language.flag) ?? language.flag,
+    })),
+    } satisfies NavigationData;
+  };
 
 export type Navigation = typeof navigation;
