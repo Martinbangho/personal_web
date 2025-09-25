@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../data/navigation';
-import { getNavigation } from '../data/navigation';
+import { buildLocalePath, getNavigation } from '../data/navigation';
 import {
   isExternalHref,
   prependForwardSlash,
@@ -24,17 +24,36 @@ const {
 const navigation = getNavigation(lang);
 const resolveNavigationHref = (
   href: string | undefined,
-  external?: boolean,
+  options: { external?: boolean; locale?: Locale } = {},
 ) => {
-  if (!href) {
+  if (href === undefined) {
     return undefined;
   }
+
+  const { external = false, locale = lang } = options;
 
   if (external || isExternalHref(href)) {
     return href;
   }
 
-  return withBase(prependForwardSlash(href));
+  if (href.startsWith('#')) {
+    const baseSlug = buildLocalePath(locale);
+    if (!baseSlug) {
+      return href;
+    }
+
+    const baseHref = withBase(prependForwardSlash(baseSlug));
+    const normalizedBase = baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
+    return `${normalizedBase}${href}`;
+  }
+
+  const localePath = buildLocalePath(locale, href);
+
+  if (!localePath) {
+    return withBase('');
+  }
+
+  return withBase(prependForwardSlash(localePath));
 };
 
 const logoHref = resolveNavigationHref(navigation.logoHref) ?? withBase('');
@@ -43,15 +62,15 @@ const logoSrc = resolvePublicAsset(
 );
 const menu = navigation.menu.map((item) => ({
   ...item,
-  href: resolveNavigationHref(item.href, item.external),
+  href: resolveNavigationHref(item.href, { external: item.external }),
   items: item.items?.map((child) => ({
     ...child,
-    href: resolveNavigationHref(child.href, child.external),
+    href: resolveNavigationHref(child.href, { external: child.external }),
   })),
 }));
 const languages = navigation.languages.map((language) => ({
   ...language,
-  href: resolveNavigationHref(language.href),
+  href: resolveNavigationHref(language.href, { locale: language.code }),
   flag: resolvePublicAsset(language.flag),
 }));
 const headerClasses = ['theme-main-menu', 'theme-menu-three', headerClass]

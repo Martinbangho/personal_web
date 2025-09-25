@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import type { Locale } from '../data/navigation';
 import type { SeoInput } from '../utils/seo';
 import { buildSeoTags } from '../utils/seo';
+import { withBase } from '../utils/paths';
 import { resolvePublicAsset } from '../utils/publicAssets';
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -25,10 +26,10 @@ const {
 const seoTags = seo ? buildSeoTags(lang, seo) : null;
 const shouldRegisterSw = import.meta.env.PROD;
 
-const serviceWorkerPath = withBase('/sw.js');
+const serviceWorkerPath = resolvePublicAsset(
+  new URL('../../public/sw.js', import.meta.url),
+);
 const serviceWorkerScope = withBase();
-=======
-const serviceWorkerPath = resolvePublicAsset('sw.js');
 const appleTouchIcon = resolvePublicAsset(
   new URL('../../public/apple-touch-icon.png', import.meta.url),
 );
@@ -46,17 +47,55 @@ const safariPinnedTab = resolvePublicAsset(
 );
 
 const backgrounds = {
-  selectArrow: resolvePublicAsset('assets/img/icons/down-arrow.svg'),
-  heroBanner: resolvePublicAsset('assets/img/hero/hero-bg-shap-3a.svg'),
-  featureShape: resolvePublicAsset('sluzby/img/shape/topograph-1c.svg'),
-  authorQuote: resolvePublicAsset('assets/img/icon/icon-45.svg'),
-  projectInfo: resolvePublicAsset('assets/img/work/big-img-01.jpg'),
-  videoPrimary: resolvePublicAsset('assets/img/video/video-1b.jpg'),
-  videoSecondary: resolvePublicAsset('assets/img/video/video-2d.jpg'),
-  priceBackground: resolvePublicAsset('img/bg/price-bg-1c.svg'),
-  planShape: resolvePublicAsset('sluzby/img/shape/topograph-2c.svg'),
-  errorSpiral: resolvePublicAsset('sluzby/img/shape/spiral-1e.svg'),
+  selectArrow: resolvePublicAsset(
+    new URL('../../public/assets/img/icons/down-arrow.svg', import.meta.url),
+  ),
+  heroBanner: resolvePublicAsset(
+    new URL('../../public/assets/img/hero/hero-bg-shap-3a.svg', import.meta.url),
+  ),
+  featureShape: resolvePublicAsset(
+    new URL('../../public/sluzby/img/shape/topograph-1c.svg', import.meta.url),
+  ),
+  authorQuote: resolvePublicAsset(
+    new URL('../../public/assets/img/icon/icon-45.svg', import.meta.url),
+  ),
+  projectInfo: resolvePublicAsset(
+    new URL('../../public/assets/img/work/big-img-01.jpg', import.meta.url),
+  ),
+  videoPrimary: resolvePublicAsset(
+    new URL('../../public/assets/img/video/video-1b.jpg', import.meta.url),
+  ),
+  videoSecondary: resolvePublicAsset(
+    new URL('../../public/assets/img/video/video-2d.jpg', import.meta.url),
+  ),
+  priceBackground: resolvePublicAsset(
+    new URL('../../public/img/bg/price-bg-1c.svg', import.meta.url),
+  ),
+  planShape: resolvePublicAsset(
+    new URL('../../public/sluzby/img/shape/topograph-2c.svg', import.meta.url),
+  ),
+  errorSpiral: resolvePublicAsset(
+    new URL('../../public/sluzby/img/shape/spiral-1e.svg', import.meta.url),
+  ),
 };
+const bootstrapCss = resolvePublicAsset(
+  new URL('../../public/assets/css/bootstrap.min.css', import.meta.url),
+);
+const fontAwesomeCss = resolvePublicAsset(
+  new URL('../../public/assets/css/font-awesome-pro.min.css', import.meta.url),
+);
+const flaticonCss = resolvePublicAsset(
+  new URL('../../public/assets/css/flaticon_gerold.css', import.meta.url),
+);
+const allCss = resolvePublicAsset(
+  new URL('../../public/assets/css/all.min.css', import.meta.url),
+);
+const bootstrapIconsCss = resolvePublicAsset(
+  new URL('../../public/assets/fonts/bootstrap-icons/font-css.css', import.meta.url),
+);
+const clashDisplayCss = resolvePublicAsset(
+  new URL('../../public/assets/fonts/custom-font/css/clash-display.css', import.meta.url),
+);
 const backgroundStyles = `
   .tj-nice-select::after {
     background-image: url("${backgrounds.selectArrow}");
@@ -124,12 +163,12 @@ const backgroundStyles = `
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
     />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/css/bootstrap.min.css')} />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/css/font-awesome-pro.min.css')} />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/css/flaticon_gerold.css')} />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/css/all.min.css')} />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/fonts/bootstrap-icons/font-css.css')} />
-    <link rel="stylesheet" href={resolvePublicAsset('assets/fonts/custom-font/css/clash-display.css')} />
+    <link rel="stylesheet" href={bootstrapCss} />
+    <link rel="stylesheet" href={fontAwesomeCss} />
+    <link rel="stylesheet" href={flaticonCss} />
+    <link rel="stylesheet" href={allCss} />
+    <link rel="stylesheet" href={bootstrapIconsCss} />
+    <link rel="stylesheet" href={clashDisplayCss} />
     <style is:inline set:html={backgroundStyles} />
     {seoTags && (
       <>

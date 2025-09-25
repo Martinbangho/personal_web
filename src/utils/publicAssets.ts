@@ -14,8 +14,8 @@ const toPublicRelativePath = (url: URL) => {
 };
 
 export const resolvePublicAsset = (pathOrUrl: string | URL) => {
-  const relativePath =
-    typeof pathOrUrl === 'string' ? pathOrUrl : toPublicRelativePath(pathOrUrl);
+  const url = pathOrUrl instanceof URL ? pathOrUrl : new URL(pathOrUrl, publicDir);
+  const relativePath = toPublicRelativePath(url);
 
   return withBase(prependForwardSlash(relativePath));
 };

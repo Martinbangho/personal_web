@@ -1,7 +1,8 @@
 ---
 import type { Locale } from '../data/navigation';
+import { buildLocalePath } from '../data/navigation';
 import { socialLinks } from '../data/socials';
-import { prependForwardSlash, withBase } from '../utils/paths';
+import { isExternalHref, prependForwardSlash, withBase } from '../utils/paths';
 import { resolvePublicAsset } from '../utils/publicAssets';
 import '../styles/components/footer.css';
 
@@ -35,7 +36,7 @@ const content = {
       'Potion is a newsletter that brings you the most important news from the world of SEO, AI, and marketing every 14 days – concisely, practically, and without fluff.',
     ctaHref: 'https://www.potion.cz',
     ctaLabel: 'Potion Newsletter',
-    privacyHref: 'en/processing-of-personal-data',
+    privacyHref: 'processing-of-personal-data',
     privacyLabel: 'Privacy Policy',
     copyright:
       '© 2025 Martin Bangho<br />SEO Consultant & AI Strategist',
@@ -53,7 +54,25 @@ const content = {
 }>;
 
 const localeContent = content[lang];
-const privacyHref = withBase(prependForwardSlash(localeContent.privacyHref));
+const privacyHref = (() => {
+  const { privacyHref } = localeContent;
+
+  if (!privacyHref) {
+    return withBase('');
+  }
+
+  if (isExternalHref(privacyHref)) {
+    return privacyHref;
+  }
+
+  const localePath = buildLocalePath(lang, privacyHref);
+
+  if (!localePath) {
+    return withBase('');
+  }
+
+  return withBase(prependForwardSlash(localePath));
+})();
 const [
   footerShape1,
   footerShape2,
@@ -68,7 +87,7 @@ const [
   'sluzby/img/shape/star-5b.svg',
   'sluzby/img/shape/star-5b.svg',
   'sluzby/img/shape/line-round-7b.svg',
-].map(resolvePublicAsset);
+].map((path) => resolvePublicAsset(new URL(`../../public/${path}`, import.meta.url)));
 ---
 <footer class="footer-area theme-footer-three pt-145 pt-lg-100 pt-sm-100">
   <img class="footer-shape shape-1b" src={footerShape1} alt="shape" />

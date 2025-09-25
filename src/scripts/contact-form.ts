@@ -1,6 +1,16 @@
 const RECAPTCHA_SITE_KEY = '6LeLuxwrAAAAACS4SwjIa4pBGqOty0K_qNOrtHtI';
 const DEFAULT_ACTION = 'contact';
 
+const BASE_URL = import.meta.env.BASE_URL ?? '/';
+
+const withBasePath = (path: string) => {
+  const normalizedBase = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
+  const normalizedPath = path.replace(/^\/+/, '');
+  return `${normalizedBase}${normalizedPath}`;
+};
+
+const CONTACT_ENDPOINT = withBasePath('api/contact');
+
 interface ContactFormMessages {
   success: string;
   error: string;
@@ -180,7 +190,7 @@ function extractPayload(form: HTMLFormElement) {
 }
 
 async function sendPayload(payload: Record<string, unknown>): Promise<SubmitResult> {
-  const response = await fetch('/api/contact', {
+  const response = await fetch(CONTACT_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -363,6 +373,7 @@ export function initContactForms() {
     }
 
     meta.form.dataset.initialized = 'true';
+    meta.form.action = CONTACT_ENDPOINT;
     meta.form.addEventListener('submit', handleSubmit);
     setStatus(meta, 'idle');
   });
